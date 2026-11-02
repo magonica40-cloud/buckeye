@@ -13,35 +13,22 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const heightClass = {
     sm: 'h-8',
-    md: 'h-10',
-    lg: 'h-14',
+    md: 'h-9 sm:h-9.5',
+    lg: 'h-9.5 sm:h-10',
   }[size];
 
-  // If badge variant is selected, use the crisp cropped version of IMG_1478.PNG with SVG vector fallback
+  // Precision Swiss Editorial Red Badge: Exact, non-expanded, razor-sharp vector typography
   if (variant === 'badge') {
     return (
-      <div className={`relative inline-flex items-center select-none group ${className}`}>
-        {/* Real cropped asset from IMG_1478.PNG */}
-        <img
-          src="/assets/buckeye_logo_cropped.png"
-          alt="Buckeye Design & Consulting"
-          className={`${heightClass} w-auto object-contain block`}
-          onError={(e) => {
-            // High-resolution SVG fallback if image is not loaded
-            e.currentTarget.style.display = 'none';
-            const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = 'flex';
-          }}
-        />
-        {/* Vector SVG Backup matching exact typography and styling */}
+      <div className={`relative inline-flex items-center select-none ${className}`}>
         <div 
-          style={{ display: 'none' }}
-          className={`${heightClass} px-3.5 py-1.5 bg-[#C8102E] flex-col justify-center items-start border border-[#9E001F] shadow-sm`}
+          className={`${heightClass} px-3 sm:px-3.5 py-1.5 bg-[#C8102E] flex flex-col justify-center items-start shadow-sm border border-[#A50C24] transition-all duration-200 group-hover:scale-[1.02] shrink-0`}
+          style={{ aspectRatio: '3.1 / 1' }}
         >
-          <span className="font-sans font-extrabold tracking-[0.22em] text-white text-base leading-none uppercase">
+          <span className="font-display font-black text-white text-[15px] sm:text-[16.5px] leading-tight tracking-[0.03em] select-none">
             Buckeye
           </span>
-          <span className="font-sans font-medium tracking-[0.14em] text-white text-[9px] uppercase mt-0.5 leading-none">
+          <span className="font-sans font-bold text-white/95 text-[7.5px] sm:text-[8px] uppercase tracking-[0.16em] leading-none mt-0.5 select-none">
             Design &amp; Consulting
           </span>
         </div>

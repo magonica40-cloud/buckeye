@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, MessageSquare } from 'lucide-react';
 import { SITE_CONFIG } from '../data/siteData';
@@ -10,7 +10,39 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState('');
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (totalScroll > 0) {
+        setScrollProgress((window.scrollY / totalScroll) * 100);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const updateISTTime = () => {
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      };
+      setCurrentTime(new Intl.DateTimeFormat('en-GB', options).format(now));
+    };
+
+    updateISTTime();
+    const interval = setInterval(updateISTTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -28,74 +60,117 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-50 bg-[#FBF9F6] border-b border-[#E4E1DC] shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-        <div className="max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <header className="fixed top-0 inset-x-0 z-50 bg-[#FBF9F6]/95 backdrop-blur-md border-b border-[#E4E1DC] transition-all">
+        {/* Top Reading Progress Bar */}
+        <div 
+          className="absolute top-0 left-0 h-[2.5px] bg-[#C8102E] z-50 transition-all duration-100 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+
+        {/* Minimalist Top Micro-Ribbon: Status & Studio Coordinates (Full Screen Width) */}
+        <div className="w-full bg-[#121214] text-white py-1.5 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-[#27272A] hidden sm:block">
+          <div className="w-full flex items-center justify-between text-[11px] font-mono tracking-wider">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-white font-bold">BENGALURU ATELIER</span>
+              </span>
+              <span className="text-[#52525B]">·</span>
+              <span className="text-[#A1A1AA]">12.9716° N, 77.6412° E</span>
+              {currentTime && (
+                <>
+                  <span className="text-[#52525B]">·</span>
+                  <span className="text-[#FFDAD8] font-bold">{currentTime} IST</span>
+                </>
+              )}
+            </div>
+            
+            <div className="flex items-center gap-4 text-[#A1A1AA]">
+              <span className="hidden md:inline">Creative Strategy &amp; Brand Advisory</span>
+              <span className="text-[#52525B] hidden md:inline">·</span>
+              <span className="text-emerald-400 font-semibold">Accepting Q4/Q1 Briefs</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Primary Navigation Bar: Logo pinned to Far Left of Screen, Nav & Actions shifted to Far Right */}
+        <div className="w-full h-20 pl-4 sm:pl-6 lg:pl-10 xl:pl-12 pr-3 sm:pr-5 lg:pr-6 xl:pr-8 flex items-center justify-between gap-4">
           
-          {/* Brand Logo with User's Cropped Logo */}
-          <div className="flex items-center gap-4">
-            <Link to="/" onClick={handleLinkClick} className="flex items-center gap-3 group">
-              <Logo variant="badge" size="md" />
-              <div className="hidden lg:flex items-center gap-2 pl-3 border-l border-[#E4E1DC]">
+          {/* FAR LEFT: Tailored Precision Logo & Atelier Brand Marker */}
+          <div className="flex items-center shrink-0">
+            <Link to="/" onClick={handleLinkClick} className="flex items-center gap-4 group">
+              <Logo variant="badge" size="lg" className="shrink-0" />
+              <div className="hidden lg:flex items-center gap-2 pl-4 border-l border-[#E4E1DC]">
                 <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block animate-pulse"></span>
-                <span className="text-[11px] font-sans font-bold tracking-[0.16em] uppercase text-[#5C403F]">
-                  Design &amp; Strategic Advisory
+                <span className="text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-[#71717A]">
+                  Creative Atelier · Bengaluru
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation - High Contrast, 100% Readable */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 bg-[#EFEEEB] p-1 border border-[#E4E1DC]">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <NavLink
-                  key={link.name}
-                  to={link.path}
-                  className={`px-3 lg:px-4 py-2 text-xs font-sans font-extrabold uppercase tracking-[0.16em] transition-all relative flex items-center gap-1.5 ${
-                    isActive 
-                      ? 'bg-[#C8102E] text-white shadow-sm' 
-                      : 'text-[#1B1C1A] hover:text-[#C8102E] hover:bg-white'
-                  }`}
-                >
-                  {link.name}
-                </NavLink>
-              );
-            })}
-          </nav>
+          {/* FAR RIGHT: Navigation Links + WhatsApp + Initiate Brief (Shifted Right) */}
+          <div className="ml-auto flex items-center gap-4 lg:gap-6 xl:gap-8">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-7">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <NavLink
+                    key={link.name}
+                    to={link.path}
+                    className={`text-xs font-sans font-bold uppercase tracking-[0.16em] transition-colors relative py-2 ${
+                      isActive 
+                        ? 'text-[#C8102E]' 
+                        : 'text-[#1B1C1A] hover:text-[#C8102E]'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#C8102E] transition-all" />
+                    )}
+                  </NavLink>
+                );
+              })}
+            </nav>
 
-          {/* Action CTAs */}
-          <div className="flex items-center gap-3">
-            {/* WhatsApp Priority Button */}
-            <a
-              href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}?text=Hello%20Buckeye%20team,%20I%20would%20like%20to%20discuss%20a%20strategic%20engagement.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden xl:flex items-center gap-2 px-3.5 py-2.5 text-xs font-sans font-bold tracking-wider text-[#1B1C1A] bg-white border border-[#E4E1DC] hover:border-[#1B1C1A] transition-colors shadow-sm"
-              title="Chat on WhatsApp"
-            >
-              <MessageSquare className="w-4 h-4 text-emerald-600" />
-              <span className="text-[11px] uppercase tracking-wider">WhatsApp</span>
-            </a>
+            {/* Subtle Vertical Divider between Nav and Action Buttons */}
+            <div className="hidden md:block h-5 w-px bg-[#E4E1DC]"></div>
 
-            {/* Consultation Trigger */}
-            <button
-              onClick={() => onOpenConsultation('Advertising & Marketing')}
-              className="px-5 py-2.5 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-2 shadow-sm hover:shadow-sharp hover:-translate-y-0.5"
-            >
-              <span>Consultation</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            {/* Action Buttons: WhatsApp + Primary CTA */}
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              {/* WhatsApp Priority Button */}
+              <a
+                href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}?text=Hello%20Buckeye%20team,%20I%20would%20like%20to%20discuss%20a%20strategic%20brief.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-sans font-semibold tracking-wider text-[#1B1C1A] bg-white border border-[#E4E1DC] hover:border-emerald-600 hover:text-emerald-700 transition-all shadow-sm"
+                title="Chat on WhatsApp"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="text-[11px] uppercase tracking-wider font-bold">WhatsApp</span>
+              </a>
 
-            {/* Mobile Menu Trigger */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 text-[#1B1C1A] hover:text-[#C8102E] transition-colors"
-              aria-label="Open menu"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+              {/* Primary High-Contrast Consultation Trigger */}
+              <button
+                onClick={() => onOpenConsultation('Advertising & Marketing')}
+                className="px-4 sm:px-5 py-2.5 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-2 shadow-sm hover:shadow-sharp hover:-translate-y-0.5 whitespace-nowrap"
+              >
+                <span>Initiate Brief</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              {/* Mobile Menu Trigger */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden p-2 text-[#1B1C1A] hover:text-[#C8102E] transition-colors ml-1"
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
+
         </div>
       </header>
 
@@ -125,7 +200,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
             </button>
           </div>
 
-          <div className="text-[11px] font-sans font-bold uppercase tracking-[0.16em] text-[#C8102E] flex items-center gap-2">
+          <div className="text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-[#C8102E] flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
             <span>Site Directory</span>
           </div>
@@ -159,15 +234,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
               setMobileMenuOpen(false);
               onOpenConsultation();
             }}
-            className="w-full py-3 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] text-center transition-colors"
+            className="w-full py-3.5 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] text-center transition-colors shadow-sm"
           >
-            Get a Free Consultation
+            Initiate Brief Consultation
           </button>
 
-          <div className="flex flex-col gap-1 text-[11px] text-[#5F5E60] font-sans">
-            <span className="uppercase font-bold tracking-widest text-[#1B1C1A]">Bureau Coordinates</span>
-            <p>Bengaluru, India · Global Strategic Practice</p>
-            <p className="text-[10px] text-[#5C403F]">{SITE_CONFIG.contact.coordinates}</p>
+          <div className="flex flex-col gap-1 text-[11px] text-[#5F5E60] font-mono">
+            <span className="uppercase font-bold tracking-widest text-[#1B1C1A]">Bengaluru Atelier</span>
+            <p>Indiranagar, Bengaluru · 12.9716° N, 77.6412° E</p>
           </div>
         </div>
       </aside>

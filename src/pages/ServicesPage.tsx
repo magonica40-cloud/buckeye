@@ -16,6 +16,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { SERVICES_DATA, SITE_CONFIG } from '../data/siteData';
+import { TiltCard } from '../components/TiltCard';
 
 interface ServicesPageProps {
   onOpenConsultation: (category?: string, contextTitle?: string) => void;
@@ -42,68 +43,123 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
     : coreServices.filter(s => s.id === activeTab);
 
   return (
-    <div className="flex flex-col w-full pt-24 md:pt-28 pb-16 bg-[#FBF9F6] text-[#1B1C1A]">
+    <div className="flex flex-col w-full pt-32 md:pt-36 pb-16 bg-[#FBF9F6] text-[#1B1C1A]">
       
       {/* =========================================================================
-          EDITORIAL HEADER
+          EDITORIAL HEADER SPLIT-SCREEN
       ========================================================================= */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-12 border-b border-[#E4E1DC]">
-        <div className="flex flex-col gap-4 max-w-4xl">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 bg-[#C8102E]"></span>
-            <span className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#C8102E]">
-              Capabilities Index // Full Spectrum Practice
-            </span>
-          </div>
+      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-14 md:py-20">
+        {/* Subtle Watermark Aura */}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[18rem] leading-none text-[#1B1C1A]">
+          PRACTICE
+        </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl font-bold text-[#1B1C1A] tracking-[-0.03em] leading-tight">
-            Commercial Advertising &amp; <br />
-            <span className="font-serif italic font-normal text-[#C8102E]">Strategic Advisory.</span>
-          </h1>
+        <div className="px-4 sm:px-8 lg:px-12 xl:px-16 w-full max-w-[1520px] mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column (6 Cols): Practice Narrative & Filters */}
+            <div className="lg:col-span-6 flex flex-col gap-5">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 bg-[#C8102E]"></span>
+                <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C8102E]">
+                  Capabilities Index // Full Spectrum Practice
+                </span>
+              </div>
 
-          <p className="text-base sm:text-lg text-[#5C403F] font-sans leading-relaxed max-w-3xl">
-            From market-defining brand positioning and cinema-grade visual craft to multi-market media planning, performance acquisition, and transparent attribution telemetry.
-          </p>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1B1C1A] tracking-[-0.03em] leading-tight">
+                Commercial Advertising &amp; <br />
+                <span className="text-[#C8102E]">Strategic Advisory.</span>
+              </h1>
 
-          {/* Practice Jump Navigation Bar */}
-          <div className="pt-6">
-            <div className="text-[10px] font-sans uppercase font-bold tracking-widest text-[#71717A] mb-3">
-              Practice Disciplines:
+              <p className="text-base sm:text-lg text-[#5C403F] font-body leading-relaxed max-w-2xl">
+                From market-defining brand positioning and cinema-grade visual craft to multi-market media planning, performance acquisition, and transparent attribution telemetry.
+              </p>
+
+              {/* Practice Jump Navigation Bar */}
+              <div className="pt-2">
+                <div className="text-[10px] font-mono uppercase font-bold tracking-widest text-[#71717A] mb-3">
+                  Select Discipline Chapter:
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setActiveTab('all')}
+                    className={`px-3.5 py-2 text-xs font-mono font-bold uppercase tracking-wider border transition-colors ${
+                      activeTab === 'all'
+                        ? 'bg-[#1B1C1A] text-white border-[#1B1C1A]'
+                        : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
+                    }`}
+                  >
+                    All (06)
+                  </button>
+                  {coreServices.map((srv) => (
+                    <button
+                      key={srv.id}
+                      onClick={() => setActiveTab(srv.id)}
+                      className={`px-3 py-2 text-xs font-mono uppercase tracking-wider border transition-colors ${
+                        activeTab === srv.id
+                          ? 'bg-[#C8102E] text-white border-[#C8102E] font-bold'
+                          : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
+                      }`}
+                    >
+                      {srv.number} {srv.title.split(' ')[0]}
+                    </button>
+                  ))}
+                  <a
+                    href="#specialized-services"
+                    className="px-3 py-2 text-xs font-mono font-bold uppercase tracking-wider border border-[#C8102E] text-[#C8102E] hover:bg-[#C8102E] hover:text-white transition-colors flex items-center gap-1"
+                  >
+                    <span>Specialized</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 text-xs font-sans font-bold uppercase tracking-wider border transition-colors ${
-                  activeTab === 'all'
-                    ? 'bg-[#1B1C1A] text-white border-[#1B1C1A]'
-                    : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
-                }`}
-              >
-                All Chapters (06)
-              </button>
-              {coreServices.map((srv) => (
-                <button
-                  key={srv.id}
-                  onClick={() => setActiveTab(srv.id)}
-                  className={`px-4 py-2 text-xs font-sans uppercase tracking-wider border transition-colors ${
-                    activeTab === srv.id
-                      ? 'bg-[#C8102E] text-white border-[#C8102E] font-bold'
-                      : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
-                  }`}
-                >
-                  {srv.number} {srv.title}
-                </button>
-              ))}
-              <a
-                href="#specialized-services"
-                className="px-4 py-2 text-xs font-sans font-bold uppercase tracking-wider border border-[#C8102E] text-[#C8102E] hover:bg-[#C8102E] hover:text-white transition-colors flex items-center gap-1"
-              >
-                <span>Specialized Modules</span>
-                <ArrowRight className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
 
+            {/* Right Column (6 Cols): Expanded Capabilities Radar Card with 3D Tilt */}
+            <div className="lg:col-span-6">
+              <TiltCard className="w-full">
+                <div className="border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl relative group">
+                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
+                    <img 
+                      src="/assets/atelier.jpg" 
+                      alt="Creative Architecture" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+
+                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
+                      <span>Framework // 07 Core Chapters</span>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
+                          Rigorous Attribution Protocol
+                        </span>
+                        <span className="text-[10px] font-mono text-[#71717A] uppercase">Full Funnel Telemetry</span>
+                      </div>
+                      <h4 className="font-display font-bold text-sm sm:text-base text-[#1B1C1A] leading-snug">
+                        Every creative campaign tied directly to commercial KPIs, brand memorability, and verified ROI return.
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 flex items-center justify-between text-xs font-mono text-[#A1A1AA] px-1">
+                    <span>Per Advertising Agency Services PDF</span>
+                    <button
+                      onClick={() => onOpenConsultation('Advertising & Marketing')}
+                      className="text-xs font-mono text-white hover:text-[#FFDAD8] flex items-center gap-1 underline"
+                    >
+                      <span>Enquire Service</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                    </button>
+                  </div>
+                </div>
+              </TiltCard>
+            </div>
+
+          </div>
         </div>
       </section>
 

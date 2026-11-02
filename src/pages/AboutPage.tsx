@@ -19,6 +19,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { SITE_CONFIG } from '../data/siteData';
+import { TiltCard } from '../components/TiltCard';
 
 interface AboutPageProps {
   onOpenConsultation: (category?: string) => void;
@@ -128,64 +129,114 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultation }) => {
   ];
 
   return (
-    <div className="flex flex-col w-full pt-24 md:pt-28 pb-16 bg-[#FBF9F6]">
+    <div className="flex flex-col w-full pt-32 md:pt-36 pb-16 bg-[#FBF9F6]">
 
       {/* =========================================================================
-          SECTION 1: EDITORIAL HERO & MANIFESTO
+          SECTION 1: EDITORIAL HERO & MANIFESTO SPLIT-SCREEN
       ========================================================================= */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-12 md:py-16 border-b border-[#E4E1DC]">
-        <div className="flex flex-col gap-6 max-w-4xl">
-          
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 bg-[#C8102E]"></span>
-            <span className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#C8102E]">
-              Buckeye Manifesto // Bengaluru Atelier
-            </span>
-            <span className="hidden sm:inline-block w-8 h-px bg-[#E4E1DC]"></span>
-            <span className="hidden sm:inline-block text-xs font-sans uppercase tracking-widest text-[#5C403F]">
-              Design &amp; Strategic Consulting
-            </span>
+      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-14 md:py-20">
+        {/* Subtle Watermark Aura */}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[18rem] leading-none text-[#1B1C1A]">
+          ATELIER
+        </div>
+
+        <div className="px-4 sm:px-8 lg:px-12 xl:px-16 w-full max-w-[1520px] mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Column (6 Cols): Manifesto & Narrative */}
+            <div className="lg:col-span-6 flex flex-col gap-6">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 bg-[#C8102E]"></span>
+                <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#C8102E]">
+                  Buckeye Manifesto // Bengaluru Atelier
+                </span>
+                <span className="hidden sm:inline-block w-8 h-px bg-[#E4E1DC]"></span>
+                <span className="hidden sm:inline-block text-xs font-mono uppercase tracking-widest text-[#5C403F]">
+                  Design &amp; Strategic Consulting
+                </span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-[1.08]">
+                Creative Thinking. Strategic Execution. <br className="hidden sm:inline" />
+                <span className="text-[#C8102E]">Measurable Growth.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-[#5C403F] font-body leading-relaxed max-w-2xl">
+                {SITE_CONFIG.agencyDescription}
+              </p>
+
+              {/* Three Foundational Benchmarks */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#E4E1DC] mt-2">
+                <div className="bg-white p-4 border border-[#E4E1DC] shadow-sm">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
+                    <span className="text-[10px] font-mono uppercase font-bold tracking-widest text-[#5F5E60]">Precision</span>
+                  </div>
+                  <div className="font-display text-xl font-bold text-[#1B1C1A]">Bespoke</div>
+                  <div className="text-[11px] text-[#5C403F] font-body mt-0.5">Custom strategic architecture</div>
+                </div>
+
+                <div className="bg-white p-4 border border-[#E4E1DC] shadow-sm">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
+                    <span className="text-[10px] font-mono uppercase font-bold tracking-widest text-[#5F5E60]">Discipline</span>
+                  </div>
+                  <div className="font-display text-xl font-bold text-[#1B1C1A]">Swiss Rigor</div>
+                  <div className="text-[11px] text-[#5C403F] font-body mt-0.5">Rigid modular aesthetic design</div>
+                </div>
+
+                <div className="bg-white p-4 border border-[#E4E1DC] shadow-sm">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
+                    <span className="text-[10px] font-mono uppercase font-bold tracking-widest text-[#5F5E60]">Attribution</span>
+                  </div>
+                  <div className="font-display text-xl font-bold text-[#C8102E]">Full Funnel</div>
+                  <div className="text-[11px] text-[#5C403F] font-body mt-0.5">Commercial ROI &amp; metrics</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column (6 Cols): Expanded Cinematic Studio Showcase Card with 3D Tilt */}
+            <div className="lg:col-span-6">
+              <TiltCard className="w-full">
+                <div className="relative border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl group">
+                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
+                    <img 
+                      src="/assets/war_room.jpg" 
+                      alt="Buckeye Strategic Deliberation Studio" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+
+                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
+                      <span>Studio Deliberation · South Wing</span>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2.5 shadow-lg">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
+                          Operating Protocol // 100% In-House Sovereignty
+                        </span>
+                        <span className="px-2.5 py-1 bg-[#C8102E] text-white text-[10px] font-mono uppercase font-bold shadow-sm">
+                          Atelier Benchmark
+                        </span>
+                      </div>
+                      <p className="font-display font-bold text-sm sm:text-base text-[#1B1C1A] leading-snug">
+                        Where quantitative consumer psychology meets uncompromising Swiss aesthetic discipline.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 flex items-center justify-between text-xs font-mono text-[#A1A1AA] px-1">
+                    <span>Indiranagar Atelier HQ</span>
+                    <span className="text-emerald-400 font-bold">12.9716° N, 77.6412° E · Bengaluru</span>
+                  </div>
+                </div>
+              </TiltCard>
+            </div>
+
           </div>
-
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1B1C1A] tracking-tight leading-[1.08]">
-            Creative Thinking. Strategic Execution. <br className="hidden sm:inline" />
-            <span className="italic font-normal text-[#C8102E]">Measurable Growth.</span>
-          </h1>
-
-          <p className="text-base sm:text-xl text-[#5C403F] font-sans leading-relaxed max-w-3xl">
-            {SITE_CONFIG.agencyDescription}
-          </p>
-
-          {/* Three Foundational Benchmarks */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#E4E1DC] mt-2">
-            <div className="bg-white p-5 border border-[#E4E1DC] shadow-sm">
-              <div className="flex items-center gap-1.5 mb-1">
-                <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
-                <span className="text-[11px] font-sans uppercase font-bold tracking-widest text-[#5F5E60]">Precision</span>
-              </div>
-              <div className="font-display text-2xl font-bold text-[#1B1C1A]">Bespoke</div>
-              <div className="text-xs text-[#5C403F] font-sans mt-0.5">Custom strategic architecture</div>
-            </div>
-
-            <div className="bg-white p-5 border border-[#E4E1DC] shadow-sm">
-              <div className="flex items-center gap-1.5 mb-1">
-                <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
-                <span className="text-[11px] font-sans uppercase font-bold tracking-widest text-[#5F5E60]">Discipline</span>
-              </div>
-              <div className="font-display text-2xl font-bold text-[#1B1C1A]">Swiss Modernism</div>
-              <div className="text-xs text-[#5C403F] font-sans mt-0.5">Rigid modular aesthetic design</div>
-            </div>
-
-            <div className="bg-white p-5 border border-[#E4E1DC] shadow-sm">
-              <div className="flex items-center gap-1.5 mb-1">
-                <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
-                <span className="text-[11px] font-sans uppercase font-bold tracking-widest text-[#5F5E60]">Accountability</span>
-              </div>
-              <div className="font-display text-2xl font-bold text-[#C8102E]">Full Funnel</div>
-              <div className="text-xs text-[#5C403F] font-sans mt-0.5">Commercial attribution &amp; metrics</div>
-            </div>
-          </div>
-
         </div>
       </section>
 

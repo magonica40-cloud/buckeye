@@ -57,10 +57,11 @@ export default {
         "on-background": "#1B1C1A",
       },
       fontFamily: {
-        serif: ['"Bodoni Moda"', "Georgia", "serif"],
-        sans: ['"Manrope"', "sans-serif"],
-        display: ['"Bodoni Moda"', "Georgia", "serif"],
-        body: ['"Manrope"', "sans-serif"],
+        sans: ['"Plus Jakarta Sans"', '"Inter"', "sans-serif"],
+        display: ['"Plus Jakarta Sans"', "sans-serif"],
+        body: ['"Inter"', '"Plus Jakarta Sans"', "sans-serif"],
+        mono: ['"Space Grotesk"', "monospace"],
+        serif: ['"Plus Jakarta Sans"', "sans-serif"],
       },
       spacing: {
         "space-xs": "0.25rem",
