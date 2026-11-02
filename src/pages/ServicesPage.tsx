@@ -89,7 +89,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                         : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
                     }`}
                   >
-                    All (06)
+                    All
                   </button>
                   {coreServices.map((srv) => (
                     <button
@@ -101,12 +101,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                           : 'bg-white text-[#5C403F] border-[#E4E1DC] hover:border-[#1B1C1A]'
                       }`}
                     >
-                      {srv.number} {srv.title.split(' ')[0]}
+                      {srv.title.split(' ')[0]}
                     </button>
                   ))}
                   <a
                     href="#specialized-services"
-                    className="px-3 py-2 text-xs font-mono font-bold uppercase tracking-wider border border-[#C8102E] text-[#C8102E] hover:bg-[#C8102E] hover:text-white transition-colors flex items-center gap-1"
+                    className="px-3 py-2 text-xs font-mono font-bold uppercase tracking-wider border border-[#C8102E] text-[#C8102E] hover:bg-[#C8102E] hover:text-white transition-colors flex items-center gap-1.5"
                   >
                     <span>Specialized</span>
                     <ArrowRight className="w-3 h-3" />
@@ -129,7 +129,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
 
                     <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
-                      <span>Framework // 07 Core Chapters</span>
+                      <span>Framework // Core Chapters</span>
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg">
@@ -185,9 +185,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                     
                     <div className="flex items-center justify-between border-b border-[#F5F3F0] pb-3">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-sm font-bold text-[#C8102E]">
-                          {service.number} //
-                        </span>
                         <span className="text-xs font-sans font-bold uppercase tracking-[0.16em] text-[#C8102E]">
                           {service.subtitle}
                         </span>
@@ -278,7 +275,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/80 via-transparent to-transparent"></div>
                         <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm p-3 border border-[#E4E1DC] flex items-center justify-between">
                           <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#1B1C1A]">
-                            Chapter {service.number} // {service.title}
+                            {service.title}
                           </span>
                           <span className="w-2 h-2 bg-[#C8102E]"></span>
                         </div>
@@ -304,7 +301,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 bg-[#C8102E]"></span>
                 <span className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#FFDAD8]">
-                  07 // Specialized Deployment Modules
+                  Specialized Deployment Modules
                 </span>
               </div>
               <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight">
@@ -323,7 +320,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 >
                   <div>
                     <span className="text-xs font-mono font-bold text-[#C8102E] block mb-3">
-                      MOD-0{idx + 1}
+                      Module
                     </span>
                     <h3 className="font-display text-xl font-bold text-white group-hover:text-[#FFDAD8] transition-colors leading-snug">
                       {item}
