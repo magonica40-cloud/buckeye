@@ -144,7 +144,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
                 href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}?text=Hello%20Buckeye%20team,%20I%20would%20like%20to%20discuss%20a%20strategic%20brief.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-sans font-semibold tracking-wider text-[#1B1C1A] bg-white border border-[#E4E1DC] hover:border-emerald-600 hover:text-emerald-700 transition-all shadow-sm"
+                className="hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-sans font-semibold tracking-wider text-[#1B1C1A] bg-white border border-[#E4E1DC] hover:border-emerald-600 hover:text-emerald-700 transition-colors"
                 title="Chat on WhatsApp"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
@@ -154,7 +154,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
               {/* Primary High-Contrast Consultation Trigger */}
               <button
                 onClick={() => onOpenConsultation('Advertising & Marketing')}
-                className="px-4 sm:px-5 py-2.5 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-2 shadow-sm hover:shadow-sharp hover:-translate-y-0.5 whitespace-nowrap"
+                className="px-4 sm:px-5 py-2.5 bg-[#C8102E] hover:bg-[#1B1C1A] text-white text-xs font-sans font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-2 shadow-sm"
               >
                 <span>Initiate Brief</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -218,7 +218,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    <span className={`text-xs font-mono ${isActive ? 'text-white' : 'text-[#5C403F]'}`}>0{idx + 1}</span>
                     <span>{link.name}</span>
                   </span>
                   <ArrowRight className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-[#5C403F]'}`} />
@@ -248,3 +247,4 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
     </>
   );
 };
+
