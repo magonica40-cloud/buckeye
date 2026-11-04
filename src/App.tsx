@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -13,10 +13,12 @@ import { ClientsPage } from './pages/ClientsPage';
 import { WorkshopsPage } from './pages/WorkshopsPage';
 import { ContactPage } from './pages/ContactPage';
 
-export const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalCategory, setModalCategory] = useState<string>('Advertising & Marketing');
   const [modalWorkshop, setModalWorkshop] = useState<string | undefined>(undefined);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const handleOpenConsultation = (category?: string, workshopTitle?: string) => {
     if (category) setModalCategory(category);
@@ -30,68 +32,74 @@ export const App: React.FC = () => {
   };
 
   return (
+    <div className={`flex flex-col ${isHomePage ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-[#FBF9F6] text-[#1B1C1A] relative`}>
+      {/* Subtle Tactile Editorial Paper / Film Grain Overlay */}
+      <div 
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-40 opacity-[0.022] mix-blend-multiply select-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+        }}
+      />
+
+      {/* Top Header */}
+      <Header onOpenConsultation={handleOpenConsultation} />
+
+      {/* Page Content Routes */}
+      <main className={`flex-1 w-full ${isHomePage ? 'pt-20 sm:pt-[6.75rem] overflow-hidden' : ''}`}>
+        <Routes>
+          <Route 
+            path="/" 
+            element={<HomePage onOpenConsultation={handleOpenConsultation} />} 
+          />
+          <Route 
+            path="/about" 
+            element={<AboutPage onOpenConsultation={handleOpenConsultation} />} 
+          />
+          <Route 
+            path="/services" 
+            element={<ServicesPage onOpenConsultation={handleOpenConsultation} />} 
+          />
+          <Route 
+            path="/clients" 
+            element={<ClientsPage onOpenConsultation={handleOpenConsultation} />} 
+          />
+          <Route 
+            path="/workshops" 
+            element={<WorkshopsPage onOpenConsultation={handleOpenConsultation} />} 
+          />
+          <Route 
+            path="/contact" 
+            element={<ContactPage />} 
+          />
+          {/* Fallback redirect */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
+      {/* Global Footer (Rendered on all pages EXCEPT single-screen zero-scroll Home) */}
+      {!isHomePage && <Footer onOpenConsultation={handleOpenConsultation} />}
+
+      {/* Mobile Sticky Bottom Navigation (Rendered on other pages) */}
+      {!isHomePage && <MobileBottomNav />}
+
+      {/* Interactive Strategic Consultation / Enquiry Modal */}
+      <ConsultationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseConsultation}
+        initialCategory={modalCategory}
+        initialWorkshop={modalWorkshop}
+      />
+    </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-[#FBF9F6] text-[#1B1C1A] relative">
-        {/* Subtle Tactile Editorial Paper / Film Grain Overlay */}
-        <div 
-          aria-hidden="true"
-          className="fixed inset-0 pointer-events-none z-40 opacity-[0.022] mix-blend-multiply select-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-          }}
-        />
-
-        {/* Top Header */}
-        <Header onOpenConsultation={handleOpenConsultation} />
-
-        {/* Page Content Routes */}
-        <main className="flex-1 w-full">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<HomePage onOpenConsultation={handleOpenConsultation} />} 
-            />
-            <Route 
-              path="/about" 
-              element={<AboutPage onOpenConsultation={handleOpenConsultation} />} 
-            />
-            <Route 
-              path="/services" 
-              element={<ServicesPage onOpenConsultation={handleOpenConsultation} />} 
-            />
-            <Route 
-              path="/clients" 
-              element={<ClientsPage onOpenConsultation={handleOpenConsultation} />} 
-            />
-            <Route 
-              path="/workshops" 
-              element={<WorkshopsPage onOpenConsultation={handleOpenConsultation} />} 
-            />
-            <Route 
-              path="/contact" 
-              element={<ContactPage />} 
-            />
-            {/* Fallback redirect */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-
-        {/* Global Footer */}
-        <Footer onOpenConsultation={handleOpenConsultation} />
-
-        {/* Mobile Sticky Bottom Navigation (as in Stitch prototype) */}
-        <MobileBottomNav />
-
-        {/* Interactive Strategic Consultation / Enquiry Modal */}
-        <ConsultationModal
-          isOpen={isModalOpen}
-          onClose={handleCloseConsultation}
-          initialCategory={modalCategory}
-          initialWorkshop={modalWorkshop}
-        />
-      </div>
+      <AppContent />
     </Router>
   );
 };
