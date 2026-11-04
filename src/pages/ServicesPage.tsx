@@ -15,8 +15,7 @@ import {
   X,
   Layers,
   ShieldCheck,
-  Check,
-  MessageSquare
+  Check
 } from 'lucide-react';
 import { SERVICES_DATA, SITE_CONFIG, ServiceCategory } from '../data/siteData';
 
@@ -408,15 +407,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <a
-                href={SITE_CONFIG.socialLinks.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3.5 bg-white text-[#1B1C1A] hover:bg-zinc-100 rounded-xl border border-zinc-300 text-xs font-mono font-bold uppercase tracking-wider transition-colors"
-              >
-                <MessageSquare className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp Desk</span>
-              </a>
+              
             </div>
 
           </div>
@@ -453,15 +444,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
               <span>Initiate Strategic Brief</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <a
-              href={SITE_CONFIG.socialLinks.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-4 bg-[#27272A] text-white hover:bg-[#3F3F46] text-xs font-mono font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 border border-[#3F3F46]"
-            >
-              <MessageSquare className="w-4 h-4 text-emerald-400" />
-              <span>WhatsApp Priority Desk</span>
-            </a>
+            
           </div>
 
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, MessageSquare } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '../data/siteData';
 import { Logo } from './Logo';
 
@@ -139,17 +139,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
 
             {/* Action Buttons: WhatsApp + Primary CTA */}
             <div className="flex items-center gap-2.5 sm:gap-3">
-              {/* WhatsApp Priority Button */}
-              <a
-                href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}?text=Hello%20Buckeye%20team,%20I%20would%20like%20to%20discuss%20a%20strategic%20brief.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-sans font-semibold tracking-wider text-[#1B1C1A] bg-white border border-[#E4E1DC] hover:border-emerald-600 hover:text-emerald-700 transition-colors"
-                title="Chat on WhatsApp"
-              >
-                <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="text-[11px] uppercase tracking-wider font-bold">WhatsApp</span>
-              </a>
+              
 
               {/* Primary High-Contrast Consultation Trigger */}
               <button

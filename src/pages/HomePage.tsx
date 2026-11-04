@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   ArrowUpRight, 
-  MessageSquare,
   Compass,
   Palette,
   TrendingUp,
@@ -81,28 +80,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full max-w-lg">
           <button
             onClick={() => onOpenConsultation('Advertising & Marketing')}
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 bg-[#C8102E] text-white hover:bg-[#A60D24] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-9 sm:py-4 bg-[#C8102E] text-white hover:bg-[#A60D24] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
             <span>Initiate Brief</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
-          <a
-            href={SITE_CONFIG.socialLinks.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 bg-white text-[#1B1C1A] hover:bg-[#1B1C1A] hover:text-white border border-[#E4E1DC] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:-translate-y-0.5"
-          >
-            <MessageSquare className="w-4 h-4 text-emerald-600" />
-            <span>WhatsApp Desk</span>
-          </a>
-
           <Link
             to="/services"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-[#71717A] hover:text-[#C8102E] transition-colors"
+            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-4 bg-white text-[#1B1C1A] hover:bg-[#1B1C1A] hover:text-white border border-[#E4E1DC] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:-translate-y-0.5"
           >
-            <span>All 7 Disciplines</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>Explore All 7 Disciplines</span>
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
