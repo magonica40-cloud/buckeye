@@ -13,20 +13,20 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   // All variants: show ONLY "BUCKEYE" — no sub-text
   const sizeMap = {
-    sm: { px: '12px 18px', fontSize: '15px', letterSpacing: '0.08em' },
-    md: { px: '14px 22px', fontSize: '18px', letterSpacing: '0.08em' },
-    lg: { px: '16px 26px', fontSize: '22px', letterSpacing: '0.09em' },
+    sm: { px: '10px 16px', fontSize: '16px', letterSpacing: '0.1em' },
+    md: { px: '14px 22px', fontSize: '21px', letterSpacing: '0.1em' },
+    lg: { px: '20px 36px', fontSize: '32px', letterSpacing: '0.12em' },
   }[size];
 
   if (variant === 'badge') {
     return (
       <div className={`inline-flex items-center select-none shrink-0 ${className}`}>
         <div
-          className="bg-[#C8102E] border border-[#A50C24] shadow-sm"
+          className="bg-[#C8102E] shadow-md"
           style={{ padding: sizeMap.px }}
         >
           <span
-            className="font-display font-black text-white leading-none tracking-widest uppercase select-none block"
+            className="font-display font-black text-white leading-none uppercase select-none block"
             style={{ fontSize: sizeMap.fontSize, letterSpacing: sizeMap.letterSpacing }}
           >
             BUCKEYE
@@ -42,7 +42,7 @@ export const Logo: React.FC<LogoProps> = ({
     dark: 'text-[#121214]',
   }[variant] ?? 'text-[#C8102E]';
 
-  const fontSizeClass = { sm: 'text-xl', md: 'text-2xl', lg: 'text-3xl' }[size];
+  const fontSizeClass = { sm: 'text-2xl', md: 'text-3xl', lg: 'text-5xl' }[size];
 
   return (
     <span
