@@ -182,7 +182,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
             return (
               <div
                 key={service.id}
-                className="relative group rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col"
+                id={service.id}
+                className="relative group rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col scroll-mt-28"
                 style={{ backgroundColor: service.bg, minHeight: '280px' }}
                 onClick={() => setSelected(service)}
               >

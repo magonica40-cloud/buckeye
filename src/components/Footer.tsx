@@ -100,25 +100,39 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
               Core Capabilities
             </span>
             <ul className="flex flex-col gap-2 text-xs font-sans text-[#A1A1AA]">
-              {SERVICES_DATA.slice(0, 5).map((srv) => (
-                <li key={srv.id}>
-                  <Link 
-                    to={`/services#${srv.id}`} 
-                    onClick={scrollToTop}
-                    className="hover:text-white transition-colors"
-                  >
-                    {srv.title}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/services" onClick={scrollToTop} className="hover:text-white transition-colors">
+                  Strategy-Oriented Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" onClick={scrollToTop} className="hover:text-white transition-colors">
+                  Mainline Advertising
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" onClick={scrollToTop} className="hover:text-white transition-colors">
+                  Branding & Identity
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" onClick={scrollToTop} className="hover:text-white transition-colors">
+                  Digital Marketing
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" onClick={scrollToTop} className="hover:text-white transition-colors">
+                  Web Design & Development
+                </Link>
+              </li>
               <li>
                 <Link 
-                  to="/workshops#tech-career-launchpad" 
+                  to="/workshops" 
                   onClick={scrollToTop}
                   className="text-white hover:text-[#C8102E] font-semibold transition-colors flex items-center gap-1.5 pt-1"
                 >
                   <span className="w-1.5 h-1.5 bg-[#C8102E]"></span>
-                  <span>Tech Career Launchpad</span>
+                  <span>Workshops &amp; Masterclasses</span>
                 </Link>
               </li>
             </ul>

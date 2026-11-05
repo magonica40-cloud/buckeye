@@ -356,7 +356,7 @@ export const ContactPage: React.FC = () => {
       {/* =========================================================================
           SECTION 4: STRATEGIC BRIEF SUBMISSION FORM
       ========================================================================= */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 w-full max-w-[1520px] mx-auto border-b border-[#E4E1DC]">
+      <section id="contact-form" className="py-16 px-4 sm:px-8 lg:px-12 xl:px-16 w-full max-w-[1520px] mx-auto border-b border-[#E4E1DC] scroll-mt-28">
         <div className="bg-white border border-[#E4E1DC] p-8 sm:p-14 shadow-sm max-w-4xl mx-auto">
           
           <div className="border-b border-[#E4E1DC] pb-6 mb-8">
