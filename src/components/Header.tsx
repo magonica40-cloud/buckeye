@@ -94,19 +94,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
         </div>
 
         {/* Primary Navigation Bar: Logo pinned to Far Left of Screen, Nav & Actions shifted to Far Right */}
-        <div className="w-full h-20 pl-4 sm:pl-6 lg:pl-10 xl:pl-12 pr-3 sm:pr-5 lg:pr-6 xl:pr-8 flex items-center justify-between gap-4">
+        <div className="w-full h-24 pl-4 sm:pl-6 lg:pl-10 xl:pl-12 pr-3 sm:pr-5 lg:pr-6 xl:pr-8 flex items-center justify-between gap-4">
           
           {/* FAR LEFT: Tailored Precision Logo & Atelier Brand Marker */}
           <div className="flex items-center shrink-0">
             <Link to="/" onClick={handleLinkClick} className="flex items-center gap-4 group">
               <Logo variant="badge" size="lg" className="shrink-0" />
-              <div className="hidden lg:flex items-center gap-2 pl-4 border-l border-[#E4E1DC]">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block animate-pulse"></span>
-                <span className="text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-[#71717A]">
-                  Creative Atelier · Bengaluru
-                </span>
-              </div>
-            </Link>
+              </Link>
           </div>
 
           {/* FAR RIGHT: Navigation Links + WhatsApp + Initiate Brief (Shifted Right) */}
