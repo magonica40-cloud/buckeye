@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { ConsultationModal } from './components/ConsultationModal';
 import { ScrollToTop } from './components/ScrollToTop';
+import { CustomCursor } from './components/CustomCursor';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -32,7 +33,8 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className={`flex flex-col ${isHomePage ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-[#FBF9F6] text-[#1B1C1A] relative`}>
+    <div className={`flex flex-col ${isHomePage ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-[#FBF9F6] text-[#1B1C1A] relative`} style={{ cursor: 'none' }}>
+      <CustomCursor />
       {/* Subtle Tactile Editorial Paper / Film Grain Overlay */}
       <div 
         aria-hidden="true"

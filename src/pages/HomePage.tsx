@@ -49,7 +49,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
           className="font-display font-black uppercase text-[#C8102E]"
           style={{
             fontSize: 'clamp(2.8rem, 9.5vw, 8rem)',
-            lineHeight: '0.92',
+            lineHeight: '1.0',
             letterSpacing: '-0.03em',
             marginBottom: 'clamp(1.5rem, 4vw, 3rem)',
           }}

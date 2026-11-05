@@ -172,50 +172,71 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column (6 Cols): Expanded Studio Desk & Map Card with 3D Tilt */}
+            {/* Right Column: Clean CSS Studio Card — always visible */}
             <div className="lg:col-span-6">
-              <TiltCard className="w-full">
-                <div className="border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl relative group">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
-                    <img 
-                      src="/assets/indiranagar_office.jpg" 
-                      alt="Buckeye Indiranagar Atelier" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+              <div className="border-2 border-[#1B1C1A] bg-[#121214] p-6 shadow-2xl">
 
-                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
-                      <span>Studio Coordinates · Bengaluru</span>
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
-                          {SITE_CONFIG.contact.hours}
-                        </span>
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      </div>
-                      <h4 className="font-display font-bold text-base sm:text-lg text-[#1B1C1A]">
-                        {SITE_CONFIG.contact.address}
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 flex items-center justify-between text-xs font-mono text-[#A1A1AA] px-1">
-                    <span>Direct Concierge Registration</span>
-                    <a
-                      href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-400 font-bold flex items-center gap-1.5 hover:underline"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Desk</span>
-                    </a>
-                  </div>
+                {/* Badge */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="bg-[#C8102E] px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-white animate-pulse" />
+                    Studio Coordinates · Bengaluru
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Open Now
+                  </span>
                 </div>
-              </TiltCard>
+
+                {/* Address */}
+                <div className="bg-[#1C1C20] border border-[#27272A] p-5 mb-5">
+                  <div className="text-[11px] font-mono uppercase tracking-widest text-[#71717A] mb-2">Studio Address</div>
+                  <h4 className="font-display font-bold text-white text-lg leading-snug mb-1">
+                    {SITE_CONFIG.contact.address}
+                  </h4>
+                  <p className="text-[#A1A1AA] text-xs font-mono">Indiranagar, Bengaluru, Karnataka</p>
+                </div>
+
+                {/* Info grid */}
+                <div className="grid grid-cols-2 gap-3 mb-5">
+                  {[
+                    { label: 'Studio Hours', value: SITE_CONFIG.contact.hours, color: 'text-[#C8102E]' },
+                    { label: 'Response Time', value: '< 24 Hours', color: 'text-emerald-400' },
+                    { label: 'Coordinates', value: '12.9716° N, 77.6412° E', color: 'text-white' },
+                    { label: 'Protocol', value: 'Strict NDA', color: 'text-white' },
+                  ].map((item) => (
+                    <div key={item.label} className="bg-[#1C1C20] border border-[#27272A] p-4">
+                      <div className="text-[10px] font-mono uppercase tracking-widest text-[#71717A] mb-1">{item.label}</div>
+                      <div className={`font-display font-bold text-sm ${item.color}`}>{item.value}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Contact links */}
+                <div className="space-y-2">
+                  <a href={`tel:${SITE_CONFIG.contact.phoneTel}`} className="flex items-center gap-3 p-3 bg-[#1C1C20] border border-[#27272A] hover:border-[#C8102E]/50 transition-colors group">
+                    <Phone className="w-4 h-4 text-[#C8102E] shrink-0" />
+                    <span className="font-mono text-sm text-white group-hover:text-[#FFDAD8] transition-colors">{SITE_CONFIG.contact.phoneDisplay}</span>
+                  </a>
+                  <a href={`mailto:${SITE_CONFIG.contact.emailBriefs}`} className="flex items-center gap-3 p-3 bg-[#1C1C20] border border-[#27272A] hover:border-[#C8102E]/50 transition-colors group">
+                    <Mail className="w-4 h-4 text-[#C8102E] shrink-0" />
+                    <span className="font-mono text-sm text-white group-hover:text-[#FFDAD8] transition-colors">{SITE_CONFIG.contact.emailBriefs}</span>
+                  </a>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-[#27272A] flex items-center justify-between text-[11px] font-mono text-[#52525B]">
+                  <span>Direct Concierge Registration</span>
+                  <a
+                    href={`https://wa.me/${SITE_CONFIG.contact.whatsappNumber}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 font-bold flex items-center gap-1.5 hover:underline"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>WhatsApp Desk</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
           </div>
