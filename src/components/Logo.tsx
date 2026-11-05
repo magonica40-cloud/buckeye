@@ -6,49 +6,60 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export const Logo: React.FC<LogoProps> = ({
-  variant = 'badge',
+export const Logo: React.FC<LogoProps> = ({ 
+  variant = 'badge', 
   className = '',
-  size = 'md'
+  size = 'md' 
 }) => {
-  // All variants: show ONLY "BUCKEYE" — no sub-text
-  const sizeMap = {
-    sm: { px: '10px 16px', fontSize: '16px', letterSpacing: '0.1em' },
-    md: { px: '14px 22px', fontSize: '21px', letterSpacing: '0.1em' },
-    lg: { px: '20px 36px', fontSize: '32px', letterSpacing: '0.12em' },
+  const heightClass = {
+    sm: 'h-8',
+    md: 'h-9 sm:h-9.5',
+    lg: 'h-9.5 sm:h-10',
   }[size];
 
+  // Precision Swiss Editorial Red Badge: Exact, non-expanded, razor-sharp vector typography
   if (variant === 'badge') {
     return (
-      <div className={`inline-flex items-center select-none shrink-0 ${className}`}>
-        <div
-          className="bg-[#C8102E] shadow-md"
-          style={{ padding: sizeMap.px }}
+      <div className={`relative inline-flex items-center select-none ${className}`}>
+        <div 
+          className={`${heightClass} px-3 sm:px-3.5 py-1.5 bg-[#C8102E] flex flex-col justify-center items-start shadow-sm border border-[#A50C24] transition-all duration-200 group-hover:scale-[1.02] shrink-0`}
+          style={{ aspectRatio: '3.1 / 1' }}
         >
-          <span
-            className="font-display font-black text-white leading-none uppercase select-none block"
-            style={{ fontSize: sizeMap.fontSize, letterSpacing: sizeMap.letterSpacing }}
-          >
-            BUCKEYE
+          <span className="font-display font-black text-white text-[15px] sm:text-[16.5px] leading-tight tracking-[0.03em] select-none">
+            Buckeye
+          </span>
+          <span className="font-sans font-bold text-white/95 text-[7.5px] sm:text-[8px] uppercase tracking-[0.16em] leading-none mt-0.5 select-none">
+            Design &amp; Consulting
           </span>
         </div>
       </div>
     );
   }
 
+  // Vector transparent variants (crimson / white / dark)
   const textColor = {
     crimson: 'text-[#C8102E]',
     white: 'text-white',
     dark: 'text-[#121214]',
-  }[variant] ?? 'text-[#C8102E]';
+  }[variant];
 
-  const fontSizeClass = { sm: 'text-2xl', md: 'text-3xl', lg: 'text-5xl' }[size];
+  const subColor = {
+    crimson: 'text-[#5C403F]',
+    white: 'text-[#D4D4D8]',
+    dark: 'text-[#5F5E60]',
+  }[variant];
 
   return (
-    <span
-      className={`font-display font-black uppercase tracking-widest leading-none select-none ${fontSizeClass} ${textColor} ${className}`}
-    >
-      BUCKEYE
-    </span>
+    <div className={`inline-flex flex-col select-none leading-none ${className}`}>
+      <div className="flex items-center gap-1.5">
+        <span className={`font-sans font-black tracking-[0.2em] text-xl md:text-2xl uppercase ${textColor}`}>
+          Buckeye
+        </span>
+        <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
+      </div>
+      <span className={`font-sans font-semibold tracking-[0.18em] text-[10px] md:text-[11px] uppercase mt-0.5 ${subColor}`}>
+        Design &amp; Consulting
+      </span>
+    </div>
   );
 };
