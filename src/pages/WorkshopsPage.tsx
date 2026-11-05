@@ -85,24 +85,63 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ onOpenConsultation
               </div>
             </div>
 
-            {/* Right Column (6 Cols): Expanded Hero Event Pass Card with 3D Tilt */}
+            {/* Right Column (6 Cols): Clean CSS Event Pass Card with 3D Tilt */}
             <div className="lg:col-span-6">
               <TiltCard className="w-full">
                 <div className="border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl relative group">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
-                    <img 
-                      src="/assets/workshop_concept.jpeg" 
-                      alt="Tech Career Launchpad Workshop" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+                  {/* CSS-only Event Pass — no photo */}
+                  <div className="relative w-full overflow-hidden bg-[#1B1B1F] p-8 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[420px] sm:min-h-[480px] lg:min-h-[530px]">
+                    
+                    {/* Decorative background elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#C8102E]/5 rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#C8102E]/[0.03] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
+                    <div className="absolute top-8 right-8 w-px h-32 bg-gradient-to-b from-[#C8102E]/40 to-transparent pointer-events-none"></div>
 
-                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
-                      <span>Flagship Campus Event Pass</span>
+                    {/* Top: Badge */}
+                    <div className="flex items-center gap-2 relative z-10">
+                      <span className="bg-[#C8102E] px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-white inline-block animate-pulse"></span>
+                        <span>Flagship Campus Event Pass</span>
+                      </span>
                     </div>
 
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg">
+                    {/* Center: Key Info Grid */}
+                    <div className="flex flex-col gap-6 relative z-10 my-8">
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#71717A]">Venue</span>
+                          <span className="text-white font-display font-bold text-lg sm:text-xl">Bengaluru Colleges</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#71717A]">Ticket Price</span>
+                          <span className="text-[#C8102E] font-display font-bold text-lg sm:text-xl">₹499 per student</span>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#71717A]">Batch Size</span>
+                          <span className="text-white font-display font-bold text-lg sm:text-xl">50–100 Students</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#71717A]">Duration</span>
+                          <span className="text-white font-display font-bold text-lg sm:text-xl">2–4 Hours</span>
+                        </div>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#3F3F46] to-transparent"></div>
+
+                      {/* Target Audience */}
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#C8102E] mb-2 block">Target Audience</span>
+                        <p className="text-[#D4D4D8] text-sm sm:text-base font-body leading-relaxed">
+                          Final-year B.E., B.Tech, BCA, MCA and computer science students preparing for placements or their first IT job.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Bottom: Programme Info Card */}
+                    <div className="bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg relative z-10">
                       <div className="flex items-center justify-between">
                         <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
                           Tech Career Launchpad

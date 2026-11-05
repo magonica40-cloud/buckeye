@@ -156,13 +156,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultation }) => {
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-[1.08]">
-                Creative Thinking. Strategic Execution. <br className="hidden sm:inline" />
-                <span className="text-[#C8102E]">Measurable Growth.</span>
-              </h1>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1B1C1A] tracking-tight leading-[1.08]">We Create. You Grow.</h1>
 
               <p className="text-base sm:text-lg text-[#5C403F] font-body leading-relaxed max-w-2xl">
-                {SITE_CONFIG.agencyDescription}
+                We Create. You Grow.<br/><br/>A creative space where ideas become identities, stories become experiences and brands become unforgettable. We bring imagination, strategy and execution together to make brands matter. Any crazy idea is welcome.
               </p>
 
               {/* Three Foundational Benchmarks */}
