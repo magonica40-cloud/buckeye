@@ -129,12 +129,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultation }) => {
   ];
 
   return (
-    <div className="flex flex-col w-full pt-32 md:pt-36 pb-16 bg-[#FBF9F6]">
+    <div className="flex flex-col w-full pt-24 md:pt-28 pb-12 bg-[#FBF9F6]">
 
       {/* =========================================================================
           SECTION 1: EDITORIAL HERO & MANIFESTO SPLIT-SCREEN
       ========================================================================= */}
-      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-14 md:py-20">
+      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-8 md:py-10">
         {/* Subtle Watermark Aura */}
         <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[18rem] leading-none text-[#1B1C1A]">
           ATELIER
@@ -193,44 +193,54 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultation }) => {
               </div>
             </div>
 
-            {/* Right Column (6 Cols): Expanded Cinematic Studio Showcase Card with 3D Tilt */}
+            {/* Right Column: CSS-only Studio Identity Card — no image, fits viewport */}
             <div className="lg:col-span-6">
-              <TiltCard className="w-full">
-                <div className="relative border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl group">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
-                    <img 
-                      src="/assets/war_room.jpg" 
-                      alt="Buckeye Strategic Deliberation Studio" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+              <div className="border-2 border-[#1B1C1A] bg-[#121214] p-6 shadow-2xl">
 
-                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
-                      <span>Studio Deliberation · South Wing</span>
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2.5 shadow-lg">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
-                          Operating Protocol // 100% In-House Sovereignty
-                        </span>
-                        <span className="px-2.5 py-1 bg-[#C8102E] text-white text-[10px] font-mono uppercase font-bold shadow-sm">
-                          Atelier Benchmark
-                        </span>
-                      </div>
-                      <p className="font-display font-bold text-sm sm:text-base text-[#1B1C1A] leading-snug">
-                        Where quantitative consumer psychology meets uncompromising Swiss aesthetic discipline.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 flex items-center justify-between text-xs font-mono text-[#A1A1AA] px-1">
-                    <span>Indiranagar Atelier HQ</span>
-                    <span className="text-emerald-400 font-bold">12.9716° N, 77.6412° E · Bengaluru</span>
-                  </div>
+                {/* Header badge */}
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="bg-[#C8102E] px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-white animate-pulse" />
+                    Bengaluru Atelier · Indiranagar HQ
+                  </span>
                 </div>
-              </TiltCard>
+
+                {/* Big quote */}
+                <blockquote className="font-display font-bold text-white text-xl sm:text-2xl leading-snug mb-6 border-l-2 border-[#C8102E] pl-5">
+                  "Where ideas become identities and brands become unforgettable."
+                </blockquote>
+
+                {/* Stats grid */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {[
+                    { num: '7+', label: 'Years in Market' },
+                    { num: '50+', label: 'Brands Served' },
+                    { num: '100%', label: 'In-House Production' },
+                    { num: '<24h', label: 'Response Guarantee' },
+                  ].map((s) => (
+                    <div key={s.label} className="bg-[#1C1C20] border border-[#27272A] p-4">
+                      <div className="font-display font-black text-2xl text-[#C8102E] leading-none mb-1">{s.num}</div>
+                      <div className="text-[11px] font-mono uppercase tracking-widest text-[#A1A1AA]">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Pillars */}
+                <div className="space-y-2">
+                  {['Strategy & Brand Architecture', 'Cinema-Grade Creative Production', 'Multi-Market Media Planning', 'Transparent Attribution & ROI'].map((p) => (
+                    <div key={p} className="flex items-center gap-3 text-[#D4D4D8] text-sm font-body">
+                      <span className="w-1.5 h-1.5 bg-[#C8102E] shrink-0" />
+                      {p}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="mt-6 pt-4 border-t border-[#27272A] flex items-center justify-between text-[11px] font-mono text-[#52525B]">
+                  <span>Indiranagar Atelier HQ</span>
+                  <span className="text-emerald-400 font-bold">12.9716° N, 77.6412° E</span>
+                </div>
+              </div>
             </div>
 
           </div>

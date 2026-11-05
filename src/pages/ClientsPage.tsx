@@ -39,12 +39,12 @@ export const ClientsPage: React.FC<ClientsPageProps> = ({ onOpenConsultation }) 
   const activeStudy = CASE_STUDIES_DATA.find((cs) => cs.id === selectedCaseStudyModal);
 
   return (
-    <div className="flex flex-col w-full pt-32 md:pt-36 pb-16 bg-[#FBF9F6]">
+    <div className="flex flex-col w-full pt-24 md:pt-28 pb-12 bg-[#FBF9F6]">
       
       {/* =========================================================================
           SECTION 1: EDITORIAL HEADER & ARCHIVE CONTEXT SPLIT-SCREEN
       ========================================================================= */}
-      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-14 md:py-20">
+      <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-8 md:py-10">
         {/* Subtle Watermark Aura */}
         <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[18rem] leading-none text-[#1B1C1A]">
           CLIENTS
@@ -87,47 +87,50 @@ export const ClientsPage: React.FC<ClientsPageProps> = ({ onOpenConsultation }) 
               </div>
             </div>
 
-            {/* Right Column (6 Cols): Expanded Hero Portfolio Showcase Card with 3D Tilt */}
+            {/* Right Column: CSS-only Portfolio Showcase — fits viewport */}
             <div className="lg:col-span-6">
-              <TiltCard className="w-full">
-                <div className="border-2 border-[#1B1C1A] bg-[#121214] p-3 sm:p-4 shadow-2xl relative group">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[530px] w-full overflow-hidden bg-[#1B1B1F]">
-                    <img 
-                      src="/assets/kinetic.jpg" 
-                      alt="Selected Case Study" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-transparent to-black/30 pointer-events-none"></div>
+              <div className="border-2 border-[#1B1C1A] bg-[#121214] p-6 shadow-2xl">
 
-                    <div className="absolute top-4 left-4 bg-[#121214]/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white border border-[#3F3F46] flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C8102E] inline-block"></span>
-                      <span>Selected Archive Feature</span>
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-5 border border-[#E4E1DC] flex flex-col gap-2 shadow-lg">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">
-                          Kinetic Aeronautics Rebrand
-                        </span>
-                        <span className="text-xs font-mono text-emerald-600 font-bold uppercase bg-emerald-50 px-2 py-0.5 border border-emerald-200">
-                          +184% Pipeline
-                        </span>
-                      </div>
-                      <h4 className="font-display font-bold text-base sm:text-lg text-[#1B1C1A]">
-                        The Autonomous Leap: Rebranding Urban Aviation
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 flex items-center justify-between text-xs font-mono text-[#A1A1AA] px-1">
-                    <span>04 Demonstrative Briefs Below</span>
-                    <span className="text-white flex items-center gap-1 font-bold">
-                      <span>Scroll to Inspect</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
-                    </span>
-                  </div>
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="bg-[#C8102E] px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-white animate-pulse" />
+                    Selected Archive Feature
+                  </span>
                 </div>
-              </TiltCard>
+
+                {/* Featured case highlight */}
+                <div className="bg-[#1C1C20] border border-[#27272A] p-5 mb-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#C8102E]">Kinetic Aeronautics</span>
+                    <span className="text-xs font-mono text-emerald-400 font-bold bg-emerald-900/30 px-2 py-0.5 border border-emerald-800">+184% Pipeline</span>
+                  </div>
+                  <h4 className="font-display font-bold text-base text-white leading-snug mb-2">The Autonomous Leap: Rebranding Urban Aviation</h4>
+                  <p className="text-[#A1A1AA] text-xs font-body leading-relaxed">Full rebrand, visual identity system, and go-to-market campaign for Bengaluru's leading autonomous aerial mobility startup.</p>
+                </div>
+
+                {/* Sector stats */}
+                <div className="grid grid-cols-2 gap-3 mb-5">
+                  {[
+                    { num: '04', label: 'Demonstrative Briefs' },
+                    { num: '7+', label: 'Sectors Covered' },
+                    { num: 'NDA', label: 'Real Assets on Request' },
+                    { num: '100%', label: 'Transparent Results' },
+                  ].map((s) => (
+                    <div key={s.label} className="bg-[#1C1C20] border border-[#27272A] p-3">
+                      <div className="font-display font-black text-xl text-[#C8102E] leading-none mb-0.5">{s.num}</div>
+                      <div className="text-[11px] font-mono uppercase tracking-widest text-[#71717A]">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-4 border-t border-[#27272A] flex items-center justify-between text-[11px] font-mono text-[#52525B]">
+                  <span>04 Demonstrative Briefs Below</span>
+                  <span className="text-[#C8102E] font-bold flex items-center gap-1">
+                    <span>Scroll to Inspect</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </div>
             </div>
 
           </div>
