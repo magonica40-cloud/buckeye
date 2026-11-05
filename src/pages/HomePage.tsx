@@ -8,110 +8,131 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
   return (
-    <div className="w-full h-dvh flex flex-col bg-[#FBF9F6] overflow-hidden relative">
+    <div className="w-full h-dvh flex flex-col bg-[#FAF8F5] overflow-hidden relative">
 
-      {/* Background: soft crimson glow, no grid, no image */}
+      {/* ── Background atmosphere (pure CSS) ──────────────────── */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(200,16,46,0.055) 0%, transparent 68%)',
+            'radial-gradient(ellipse 72% 60% at 50% 44%, rgba(200,16,46,0.06) 0%, transparent 65%)',
         }}
       />
-
-      {/* Faint watermark */}
+      {/* Top-left corner line accent */}
+      <div aria-hidden="true" className="absolute top-8 left-8 pointer-events-none">
+        <div className="w-14 h-px bg-[#C8102E]/30" />
+        <div className="w-px h-14 bg-[#C8102E]/30" />
+      </div>
+      {/* Bottom-right corner line accent */}
+      <div aria-hidden="true" className="absolute bottom-14 right-8 pointer-events-none">
+        <div className="w-14 h-px bg-[#C8102E]/30 ml-auto" />
+        <div className="w-px h-14 bg-[#C8102E]/30 ml-auto" />
+      </div>
+      {/* Giant faint watermark */}
       <div
         aria-hidden="true"
-        className="absolute right-[-4%] top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.016] font-display font-black text-[21vw] leading-none text-[#1B1C1A] tracking-tighter"
+        className="absolute inset-0 flex items-center justify-end pr-6 pointer-events-none select-none overflow-hidden"
       >
-        BUCKEYE
+        <span
+          className="font-display font-black text-[#1B1C1A] leading-none tracking-tighter"
+          style={{ fontSize: 'clamp(8rem, 24vw, 22rem)', opacity: 0.015 }}
+        >
+          BUCKEYE
+        </span>
       </div>
 
-      {/* ── HERO: takes all available space between header and bottom bar ── */}
+      {/* ══════════════════════════════════════════════════════════
+          HERO — 3 clear visual zones, generous gaps between each
+      ══════════════════════════════════════════════════════════ */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center relative z-10">
 
-        {/* Pill tag */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-white border border-[#E4E1DC] shadow-sm mb-7 sm:mb-9">
-          <span className="w-2 h-2 bg-[#C8102E] animate-pulse" />
-          <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.22em] uppercase text-[#1B1C1A]">
-            Buckeye Design &amp; Consulting
-          </span>
-          <span className="hidden sm:block w-px h-3 bg-[#D4D1CC]" />
-          <span className="hidden sm:block text-[10px] font-mono tracking-[0.15em] uppercase text-[#8A8480]">
-            Commercial Advertising
-          </span>
+        {/* ── ZONE 1: Agency identity tag ───────────────────────── */}
+        <div className="flex flex-col items-center gap-3 mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 bg-white border border-[#E4E1DC] shadow-sm">
+            <span className="w-2 h-2 bg-[#C8102E] animate-pulse" />
+            <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.24em] uppercase text-[#1B1C1A]">
+              Buckeye Design &amp; Consulting
+            </span>
+            <span className="w-px h-3.5 bg-[#D4D1CC]" />
+            <span className="text-[10px] font-mono tracking-[0.18em] uppercase text-[#8A8480]">
+              Commercial Advertising
+            </span>
+          </div>
         </div>
 
-        {/* Main headline — pure CSS, no image */}
-        <h1
-          className="font-display font-black uppercase leading-[0.9] tracking-[-0.03em] text-[#C8102E] mb-5 sm:mb-6"
-          style={{ fontSize: 'clamp(2.6rem, 9vw, 7.5rem)' }}
-        >
-          REACH YOUR
-          <br />
-          TARGET AUDIENCE
-        </h1>
-
-        {/* Divider ornament */}
-        <div className="flex items-center gap-3 mb-5 sm:mb-6">
-          <span className="w-10 sm:w-16 h-px bg-[#C8102E]/25" />
-          <span className="w-2 h-2 rotate-45 bg-[#C8102E]" />
-          <span className="w-10 sm:w-16 h-px bg-[#C8102E]/25" />
-        </div>
-
-        {/* Sub-headline */}
-        <p
-          className="font-mono font-black uppercase tracking-[0.2em] text-[#1B1C1A] mb-5 sm:mb-7"
-          style={{ fontSize: 'clamp(0.6rem, 1.6vw, 1.1rem)' }}
-        >
-          BETTER TARGETING &nbsp;=&nbsp; BETTER RESULTS
-        </p>
-
-        {/* Supporting copy */}
-        <p className="text-[#5C403F] text-xs sm:text-sm md:text-base max-w-xl font-body leading-relaxed mb-8 sm:mb-10">
-          We build campaigns that connect with the right people and deliver real
-          business growth — from brand positioning to multi-market media planning
-          and transparent attribution.
-        </p>
-
-        {/* CTA buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          <button
-            onClick={() => onOpenConsultation('Advertising & Marketing')}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 sm:px-10 sm:py-4 bg-[#C8102E] text-white hover:bg-[#A60D24] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:-translate-y-0.5"
+        {/* ── ZONE 2: Primary headline ──────────────────────────── */}
+        <div className="flex flex-col items-center gap-5 sm:gap-7 mb-10 sm:mb-14">
+          <h1
+            className="font-display font-black uppercase leading-[0.88] tracking-[-0.035em] text-[#C8102E]"
+            style={{ fontSize: 'clamp(2.8rem, 9.5vw, 8rem)' }}
           >
-            <span>Initiate Brief</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+            REACH YOUR
+            <br />
+            TARGET AUDIENCE
+          </h1>
 
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 px-7 py-3.5 sm:px-9 sm:py-4 bg-white text-[#1B1C1A] hover:bg-[#1B1C1A] hover:text-white border border-[#D4D1CC] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all duration-200 shadow-sm hover:-translate-y-0.5"
+          {/* Divider */}
+          <div className="flex items-center gap-4">
+            <span className="block w-12 sm:w-20 h-px bg-[#C8102E]/30" />
+            <span className="block w-2.5 h-2.5 rotate-45 bg-[#C8102E]" />
+            <span className="block w-12 sm:w-20 h-px bg-[#C8102E]/30" />
+          </div>
+
+          <p
+            className="font-mono font-black uppercase tracking-[0.22em] text-[#1B1C1A]"
+            style={{ fontSize: 'clamp(0.6rem, 1.5vw, 1rem)' }}
           >
-            <span>Explore Services</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+            Better Targeting &nbsp;=&nbsp; Better Results
+          </p>
         </div>
+
+        {/* ── ZONE 3: Copy + CTAs ───────────────────────────────── */}
+        <div className="flex flex-col items-center gap-6 sm:gap-8">
+          <p className="text-[#5C403F] text-sm sm:text-base max-w-lg font-body leading-relaxed">
+            We build campaigns that connect with the right people and deliver real
+            business growth — from brand positioning to multi-market media planning
+            and transparent attribution.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={() => onOpenConsultation('Advertising & Marketing')}
+              className="inline-flex items-center gap-2.5 px-9 py-4 bg-[#C8102E] text-white hover:bg-[#A60D24] text-xs sm:text-sm font-mono font-bold uppercase tracking-widest transition-all duration-200 shadow-lg hover:-translate-y-0.5 hover:shadow-xl"
+            >
+              <span>Initiate Brief</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-[#1B1C1A] hover:bg-[#1B1C1A] hover:text-white border border-[#C4C0BB] text-xs sm:text-sm font-mono font-bold uppercase tracking-widest transition-all duration-200 shadow-sm hover:-translate-y-0.5"
+            >
+              <span>Explore Services</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+
       </div>
 
-      {/* ── BOTTOM BAR: studio info, always pinned ── */}
-      <div className="shrink-0 w-full bg-[#121214] text-[#A1A1AA] text-[10px] sm:text-[11px] font-mono py-2 px-5 sm:px-10 flex items-center justify-between gap-4 relative z-20">
+      {/* ── BOTTOM BAR: studio coordinates, always pinned ─────── */}
+      <div className="shrink-0 w-full bg-[#121214] text-[#A1A1AA] text-[10px] sm:text-[11px] font-mono py-2.5 px-5 sm:px-10 flex items-center justify-between gap-4 relative z-20">
         <div className="flex items-center gap-3 sm:gap-4">
-          <span className="text-white font-bold tracking-widest">BUCKEYE ATELIER</span>
+          <span className="text-white font-bold tracking-widest uppercase">Buckeye Atelier</span>
           <span className="text-[#3F3F46]">·</span>
           <span>Bengaluru HQ</span>
           <span className="text-[#3F3F46] hidden sm:inline">·</span>
           <span className="hidden sm:inline">12.9716° N, 77.6412° E</span>
           <span className="text-[#3F3F46] hidden md:inline">·</span>
-          <span className="hidden md:inline text-emerald-400 font-semibold flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+          <span className="hidden md:inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Accepting Q4/Q1 Briefs
           </span>
         </div>
-        <div className="flex items-center gap-4 sm:gap-5">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link to="/about" className="hover:text-white transition-colors">About</Link>
-          <Link to="/services" className="hover:text-white text-white font-bold transition-colors">Services</Link>
+          <Link to="/services" className="text-white font-bold hover:text-[#FFDAD8] transition-colors">Services</Link>
           <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
         </div>
       </div>
