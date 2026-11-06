@@ -13,10 +13,10 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ onOpenConsultation
         aria-hidden="true"
       >
         <span
-          className="font-display font-black text-[#C8102E] leading-none"
-          style={{ fontSize: 'clamp(18rem, 55vw, 65rem)', opacity: 0.05, letterSpacing: '-0.06em' }}
+          className="font-display font-black text-[#C8102E] leading-none select-none"
+          style={{ fontSize: 'clamp(5rem, 16vw, 15rem)', opacity: 0.05, letterSpacing: '-0.02em' }}
         >
-          W
+          BUCKEYE
         </span>
       </div>
 

@@ -14,10 +14,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultation }) => {
         {/* Faint watermark */}
         <div
           className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none font-display font-black leading-none text-[#1B1C1A]"
-          style={{ fontSize: 'clamp(10rem, 24vw, 22rem)', opacity: 0.025, letterSpacing: '-0.04em' }}
+          style={{ fontSize: 'clamp(8rem, 20vw, 18rem)', opacity: 0.035, letterSpacing: '-0.04em' }}
           aria-hidden="true"
         >
-          ATELIER
+          BUCKEYE
         </div>
 
         <div className="px-5 sm:px-10 lg:px-16 w-full max-w-[1440px] mx-auto relative h-full flex items-center">

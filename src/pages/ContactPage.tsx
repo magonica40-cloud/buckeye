@@ -106,8 +106,8 @@ export const ContactPage: React.FC = () => {
       ========================================================================= */}
       <section className="w-full border-b border-[#E4E1DC] relative overflow-hidden hero-light-atmosphere py-8 md:py-10">
         {/* Subtle Watermark Aura */}
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[18rem] leading-none text-[#1B1C1A]">
-          CONTACT
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.035] font-display font-black text-[clamp(6rem,18vw,18rem)] leading-none text-[#1B1C1A]">
+          BUCKEYE
         </div>
 
         <div className="px-4 sm:px-8 lg:px-12 xl:px-16 w-full max-w-[1520px] mx-auto relative">

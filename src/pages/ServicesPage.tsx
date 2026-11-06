@@ -155,8 +155,16 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
     <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-24 md:pt-28">
 
       {/* ── PAGE HEADER ──────────────────────────────────────── */}
-      <section className="w-full border-b border-[#EBEBEB] py-10 md:py-12 px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto">
-        <div className="flex items-center gap-3 mb-5">
+      <section className="w-full border-b border-[#EBEBEB] py-10 md:py-12 px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto relative overflow-hidden">
+        {/* Faint BUCKEYE watermark */}
+        <div
+          className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none font-display font-black leading-none text-[#121214]"
+          style={{ fontSize: 'clamp(6rem, 18vw, 16rem)', opacity: 0.035, letterSpacing: '-0.03em' }}
+          aria-hidden="true"
+        >
+          BUCKEYE
+        </div>
+        <div className="flex items-center gap-3 mb-5 relative z-10">
           <span className="w-2 h-2 bg-[#C8102E]"></span>
           <span className="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#C8102E]">
             Our Services · 11 Disciplines

@@ -33,7 +33,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
       >
         <span
           className="font-display font-black text-[#1B1C1A] leading-none tracking-tighter"
-          style={{ fontSize: 'clamp(8rem, 24vw, 22rem)', opacity: 0.014 }}
+          style={{ fontSize: 'clamp(8rem, 24vw, 22rem)', opacity: 0.035 }}
         >
           BUCKEYE
         </span>
