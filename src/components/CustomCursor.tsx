@@ -20,18 +20,16 @@ export const CustomCursor: React.FC = () => {
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
-    // Detect hoverable elements
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isClickable =
-        target.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor-hover]') !== null;
-      setIsHovering(isClickable);
+      setIsHovering(
+        target.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor-hover]') !== null,
+      );
     };
 
     const animate = () => {
-      // Ring lags behind dot for smooth follow
-      ringX += (dotX - ringX) * 0.14;
-      ringY += (dotY - ringY) * 0.14;
+      ringX += (dotX - ringX) * 0.13;
+      ringY += (dotY - ringY) * 0.13;
 
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
@@ -59,33 +57,34 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Outer ring — slow lag */}
       <div
         ref={ringRef}
+        aria-hidden="true"
         className="fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform"
         style={{
-          width: isHovering ? 44 : 32,
-          height: isHovering ? 44 : 32,
-          border: `1.5px solid ${isHovering ? '#C8102E' : 'rgba(200,16,46,0.5)'}`,
-          borderRadius: isHovering ? '0' : '50%',
+          width: isHovering ? 48 : 30,
+          height: isHovering ? 48 : 30,
+          border: `1px solid ${isHovering ? '#C8102E' : 'rgba(200,16,46,0.55)'}`,
+          borderRadius: '50%',
           opacity: isVisible ? 1 : 0,
-          transition: 'width 0.25s ease, height 0.25s ease, border-color 0.25s ease, border-radius 0.25s ease, opacity 0.2s ease',
+          transition: 'width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.2s ease',
+          boxShadow: isHovering ? '0 0 24px rgba(200,16,46,0.18)' : '0 0 12px rgba(200,16,46,0.1)',
         }}
       />
-      {/* Inner dot — instant */}
       <div
         ref={dotRef}
+        aria-hidden="true"
         className="fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform"
         style={{
-          width: isHovering ? 6 : 5,
-          height: isHovering ? 6 : 5,
+          width: isHovering ? 7 : 5,
+          height: isHovering ? 7 : 5,
           backgroundColor: '#C8102E',
           borderRadius: '50%',
           opacity: isVisible ? 1 : 0,
           transition: 'width 0.15s ease, height 0.15s ease, opacity 0.2s ease',
+          boxShadow: '0 0 10px rgba(200,16,46,0.35)',
         }}
       />
     </>
   );
 };
-
