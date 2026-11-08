@@ -6,8 +6,20 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = () => {
   return (
-    <main className="w-full min-h-screen bg-[#FBF9F6] pt-24 md:pt-28 flex flex-col">
-      <section className="flex-1 min-h-[calc(100dvh-7rem)] w-full flex items-stretch">
+    <main className="w-full min-h-screen bg-[#FBF9F6] pt-24 md:pt-28 flex flex-col relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-end pr-8 select-none"
+      >
+        <span
+          className="font-display font-black leading-none text-[#1B1C1A] opacity-[0.04] tracking-[-0.06em]"
+          style={{ fontSize: 'clamp(8rem, 22vw, 22rem)' }}
+        >
+          BUCKEYE
+        </span>
+      </div>
+
+      <section className="flex-1 min-h-[calc(100dvh-7rem)] w-full flex items-stretch relative z-10">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-16 flex flex-col justify-center">
           <div className="w-full max-w-6xl">
             <h1

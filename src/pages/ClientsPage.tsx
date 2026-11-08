@@ -7,6 +7,18 @@ interface ClientsPageProps {
 export const ClientsPage: React.FC<ClientsPageProps> = () => {
   return (
     <main className="min-h-[calc(100dvh-7rem)] bg-[#FBF9F6] flex flex-col overflow-hidden relative">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
+      >
+        <span
+          className="font-display font-black leading-none text-[#C8102E] opacity-[0.05] tracking-[-0.06em]"
+          style={{ fontSize: 'clamp(7rem, 18vw, 18rem)' }}
+        >
+          BUCKEYE
+        </span>
+      </div>
+
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center relative z-10">
         <p className="mb-7 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#C8102E]">
           Client Portfolio
