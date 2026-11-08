@@ -8,15 +8,12 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
   return (
     <div className="w-full h-dvh flex flex-col bg-[#FAF8F5] overflow-hidden relative">
-
-      {/* Soft radial glow — pure CSS */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 72% 60% at 50% 44%, rgba(200,16,46,0.055) 0%, transparent 65%)' }}
       />
 
-      {/* Corner accent lines */}
       <div aria-hidden="true" className="absolute top-8 left-8 pointer-events-none">
         <div className="w-14 h-px bg-[#C8102E]/25" />
         <div className="w-px h-14 bg-[#C8102E]/25" />
@@ -26,7 +23,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
         <div className="w-px h-14 bg-[#C8102E]/25 ml-auto" />
       </div>
 
-      {/* Faint watermark */}
       <div
         aria-hidden="true"
         className="absolute inset-0 flex items-center justify-end pr-6 pointer-events-none select-none overflow-hidden"
@@ -39,54 +35,50 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
         </span>
       </div>
 
-      {/* ══════════════════════════════════════════════════════
-          HERO — centred, clean, no buttons, proper spacing
-      ══════════════════════════════════════════════════════ */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center relative z-10">
+        <div className="max-w-5xl">
+          <div className="mb-5 flex items-center justify-center gap-3 text-[#C8102E]/70">
+            <span className="block h-px w-10 bg-[#C8102E]/40" />
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.38em]">Buckeye Atelier</span>
+            <span className="block h-px w-10 bg-[#C8102E]/40" />
+          </div>
 
-        {/* Main headline */}
-        <h1
-          className="font-display font-black uppercase text-[#C8102E]"
-          style={{
-            fontSize: 'clamp(2.8rem, 9.5vw, 8rem)',
-            lineHeight: '1.0',
-            letterSpacing: '-0.03em',
-            marginBottom: 'clamp(1.5rem, 4vw, 3rem)',
-          }}
-        >
-          REACH YOUR
-          <br />
-          TARGET AUDIENCE
-        </h1>
+          <h1
+            className="font-display font-black uppercase text-[#C8102E] leading-[0.9] tracking-[-0.07em]"
+            style={{
+              fontSize: 'clamp(2.4rem, 7vw, 6.2rem)',
+              marginBottom: 'clamp(1rem, 2vw, 1.6rem)',
+            }}
+          >
+            REACH YOUR
+            <br />
+            TARGET AUDIENCE
+          </h1>
 
-        {/* Thin rule separator */}
-        <div className="flex items-center gap-4" style={{ marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}>
-          <span className="block w-16 sm:w-24 h-px bg-[#C8102E]/30" />
-          <span className="block w-2 h-2 rotate-45 bg-[#C8102E]/60" />
-          <span className="block w-16 sm:w-24 h-px bg-[#C8102E]/30" />
+          <div className="flex items-center justify-center gap-4" style={{ marginBottom: 'clamp(1rem, 2vw, 1.8rem)' }}>
+            <span className="block w-12 sm:w-16 h-px bg-[#C8102E]/30" />
+            <span className="block w-2 h-2 rotate-45 bg-[#C8102E]/60" />
+            <span className="block w-12 sm:w-16 h-px bg-[#C8102E]/30" />
+          </div>
+
+          <p
+            className="font-mono font-bold uppercase tracking-[0.26em] text-[#1B1C1A]/65"
+            style={{
+              fontSize: 'clamp(0.55rem, 1.1vw, 0.8rem)',
+              marginBottom: 'clamp(1.2rem, 2.5vw, 2.2rem)',
+            }}
+          >
+            Better Targeting &nbsp;=&nbsp; Better Results
+          </p>
+
+          <p className="mx-auto max-w-xl text-[#5C403F] text-sm sm:text-base font-body leading-relaxed">
+            We build campaigns that connect with the right people and deliver real
+            business growth — from brand positioning to multi-market media planning
+            and transparent attribution.
+          </p>
         </div>
-
-        {/* Sub-line — proper breathing room */}
-        <p
-          className="font-mono font-bold uppercase tracking-[0.26em] text-[#1B1C1A]/60"
-          style={{
-            fontSize: 'clamp(0.6rem, 1.4vw, 0.9rem)',
-            marginBottom: 'clamp(2rem, 5vw, 4rem)',
-          }}
-        >
-          Better Targeting &nbsp;=&nbsp; Better Results
-        </p>
-
-        {/* Supporting copy */}
-        <p className="text-[#5C403F] text-sm sm:text-base max-w-md font-body leading-relaxed">
-          We build campaigns that connect with the right people and deliver real
-          business growth — from brand positioning to multi-market media planning
-          and transparent attribution.
-        </p>
-
       </div>
 
-      {/* Bottom bar — studio info, always pinned */}
       <div className="shrink-0 w-full bg-[#121214] text-[#A1A1AA] text-[10px] sm:text-[11px] font-mono py-2.5 px-5 sm:px-10 flex items-center justify-between gap-4 relative z-20">
         <div className="flex items-center gap-3 sm:gap-4">
           <span className="text-white font-bold tracking-widest uppercase">Buckeye Atelier</span>
@@ -106,7 +98,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultation }) => {
           <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
         </div>
       </div>
-
     </div>
   );
 };
