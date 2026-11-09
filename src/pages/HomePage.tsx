@@ -16,11 +16,11 @@ export const HomePage: React.FC<HomePageProps> = () => {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
+        className="pointer-events-none absolute inset-x-0 top-0 bottom-12 flex items-center justify-center overflow-hidden select-none"
       >
         <span
-          className="font-display font-black leading-none text-[#1B1C1A] opacity-[0.04] tracking-[-0.07em]"
-          style={{ fontSize: 'clamp(9rem, 32vw, 30rem)' }}
+          className="font-display font-black leading-none text-[#8F7770] opacity-[0.025] tracking-[-0.07em] blur-[0.3px]"
+          style={{ fontSize: 'clamp(8rem, 27vw, 25rem)' }}
         >
           BUCKEYE
         </span>
