@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Compass,
@@ -12,6 +13,10 @@ import {
   Shield,
   Search,
   FileText,
+  X,
+  Check,
+  Layers,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface ServicesPageProps {
@@ -144,58 +149,161 @@ const SERVICES: Service[] = [
   },
 ];
 
-export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }) => (
-  <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-24 md:pt-28">
-    <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto py-10 md:py-14">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-        {SERVICES.map(({ Icon, ...service }) => (
-          <article
-            key={service.id}
-            id={service.id}
-            className="relative overflow-hidden flex flex-col rounded-2xl scroll-mt-28"
-            style={{ backgroundColor: service.bg, minHeight: '280px' }}
-          >
-            <div className="absolute right-5 bottom-5 pointer-events-none select-none" aria-hidden="true" style={{ opacity: 0.2 }}>
-              <Icon className="w-28 h-28 md:w-32 md:h-32" style={{ color: service.watermark }} />
-            </div>
-            <div className="relative z-10 p-7 md:p-8 flex flex-col flex-1">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 shadow-sm shrink-0 bg-white">
-                <Icon className="w-5 h-5" style={{ color: service.iconColor }} />
+export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }) => {
+  const [selected, setSelected] = useState<Service | null>(null);
+
+  return (
+    <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-24 md:pt-28">
+      <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto py-10 md:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {SERVICES.map((service) => {
+            const { Icon } = service;
+            return (
+              <div
+                key={service.id}
+                id={service.id}
+                className="relative group rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col scroll-mt-28"
+                style={{ backgroundColor: service.bg, minHeight: '280px' }}
+                onClick={() => setSelected(service)}
+              >
+                <div
+                  className="absolute right-5 bottom-5 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110"
+                  aria-hidden="true"
+                  style={{ opacity: 0.2 }}
+                >
+                  <Icon className="w-28 h-28 md:w-32 md:h-32" style={{ color: service.watermark }} />
+                </div>
+
+                <div className="relative z-10 p-7 md:p-8 flex flex-col flex-1">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 shadow-sm shrink-0 bg-white">
+                    <Icon className="w-5 h-5" style={{ color: service.iconColor }} />
+                  </div>
+                  <h3
+                    className="font-display font-bold text-[#121214] leading-tight mb-2.5"
+                    style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p className="text-[13px] md:text-sm text-[#5C5C5C] font-body leading-relaxed flex-1">
+                    {service.short}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-display font-bold text-[#121214] leading-tight mb-2.5" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>
-                {service.title}
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto pb-16 md:pb-20">
+        <div
+          className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl"
+        >
+          <div
+            className="absolute right-0 top-0 bottom-0 w-80 pointer-events-none rounded-r-2xl"
+            style={{ background: 'radial-gradient(ellipse at right center, rgba(200,16,46,0.22), transparent 70%)' }}
+          />
+          <div className="relative z-10">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.22em] text-[#C8102E] block mb-3">
+              Initiate Partnership
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+              Ready to reach your{' '}
+              <span className="text-[#FFDAD8]">target audience?</span>
+            </h2>
+            <p className="text-sm text-[#A1A1AA] font-body leading-relaxed max-w-lg">
+              Book a strategic consultation at our Indiranagar, Bengaluru atelier or virtually worldwide.
+            </p>
+          </div>
+          <div className="relative z-10 shrink-0">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#C8102E] text-white hover:bg-white hover:text-[#C8102E] text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-lg rounded-lg"
+            >
+              <span>Initiate Strategic Brief</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="bg-white border border-[#E8E8E8] shadow-2xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto rounded-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-5 right-5 w-9 h-9 bg-[#F5F5F5] hover:bg-[#E8E8E8] flex items-center justify-center transition-colors rounded-lg"
+              aria-label="Close service details"
+            >
+              <X className="w-5 h-5 text-[#121214]" />
+            </button>
+
+            <div className="rounded-xl p-6 mb-6 relative overflow-hidden" style={{ backgroundColor: selected.bg }}>
+              <div
+                className="absolute right-4 bottom-2 pointer-events-none"
+                style={{ opacity: 0.2 }}
+                aria-hidden="true"
+              >
+                <selected.Icon className="w-20 h-20" style={{ color: selected.watermark }} />
+              </div>
+              <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center mb-4 shadow-sm">
+                <selected.Icon className="w-5 h-5" style={{ color: selected.iconColor }} />
+              </div>
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-[#121214] mb-1 relative z-10">
+                {selected.title}
               </h3>
-              <p className="text-[13px] md:text-sm text-[#5C5C5C] font-body leading-relaxed flex-1">
-                {service.short}
+              <p className="text-xs font-mono uppercase tracking-widest text-[#C8102E] font-bold relative z-10">
+                {selected.short}
               </p>
             </div>
-          </article>
-        ))}
-      </div>
-    </section>
 
-    <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto pb-16 md:pb-20">
-      <div className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl">
-        <div className="absolute right-0 top-0 bottom-0 w-80 pointer-events-none rounded-r-2xl" style={{ background: 'radial-gradient(ellipse at right center, rgba(200,16,46,0.22), transparent 70%)' }} />
-        <div className="relative z-10">
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.22em] text-[#C8102E] block mb-3">Initiate Partnership</span>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            Ready to reach your <span className="text-[#FFDAD8]">target audience?</span>
-          </h2>
-          <p className="text-sm text-[#A1A1AA] font-body leading-relaxed max-w-lg">
-            Book a strategic consultation at our Indiranagar, Bengaluru atelier or virtually worldwide.
-          </p>
+            <p className="text-sm text-[#5C5C5C] leading-relaxed mb-7">{selected.description}</p>
+
+            <div className="mb-6">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#121214] mb-3 flex items-center gap-2">
+                <Layers className="w-4 h-4 text-[#C8102E]" /> Scope of Services
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {selected.items.map((item, index) => (
+                  <div key={index} className="flex items-start gap-2 p-3 bg-[#FAFAFA] border border-[#E8E8E8] text-xs text-[#121214] rounded-lg">
+                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#121214] mb-3 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#C8102E]" /> Deliverables
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {selected.deliverables.map((deliverable, index) => (
+                  <div key={index} className="flex items-center gap-2 p-3 bg-red-50/60 border border-red-200/60 text-xs text-[#121214] font-medium rounded-lg">
+                    <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full shrink-0" />
+                    {deliverable}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-[#E8E8E8]">
+              <button
+                onClick={() => { setSelected(null); onOpenConsultation(selected.title); }}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#C8102E] text-white hover:bg-[#121214] text-xs font-mono font-bold uppercase tracking-wider transition-all rounded-lg"
+              >
+                <span>Initiate Brief for {selected.title}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="relative z-10 shrink-0">
-          <button
-            onClick={() => onOpenConsultation('Advertising & Marketing')}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C8102E] text-white hover:bg-white hover:text-[#C8102E] text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-lg rounded-lg"
-          >
-            <span>Initiate Strategic Brief</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </section>
-  </div>
-);
+      )}
+    </div>
+  );
+};
