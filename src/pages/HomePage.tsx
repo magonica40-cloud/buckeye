@@ -12,19 +12,26 @@ export const HomePage: React.FC<HomePageProps> = () => {
         <div className="w-full max-w-6xl">
           <h1
             data-cursor-hover
-            className="font-display font-extrabold uppercase text-[#C8102E] leading-tight tracking-[-0.035em]"
+            className="font-bold uppercase text-[#C8102E]"
             style={{
-              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-              fontSize: 'clamp(2.4rem, 5.6vw, 4.5rem)',
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              fontSize: 'clamp(2.25rem, 6.3vw, 3.5rem)',
+              lineHeight: 1.2,
+              letterSpacing: '0.01em',
             }}
           >
             <span className="block">REACH YOUR</span>
-            <span className="block mt-5 sm:mt-8">TARGET AUDIENCE</span>
+            <span className="block mt-10 sm:mt-12">TARGET AUDIENCE</span>
           </h1>
 
           <p
-            className="mt-8 sm:mt-10 font-sans font-extrabold uppercase text-[#C8102E] leading-tight tracking-[-0.02em]"
-            style={{ fontSize: 'clamp(1.25rem, 3.1vw, 2.5rem)' }}
+            className="mt-10 sm:mt-12 font-bold uppercase text-[#C8102E]"
+            style={{
+              fontFamily: 'Arial, Helvetica, sans-serif',
+              fontSize: 'clamp(1.25rem, 3.4vw, 1.8rem)',
+              lineHeight: 1.2,
+              letterSpacing: '0.005em',
+            }}
           >
             Better Targeting = Better Results
           </p>
