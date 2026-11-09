@@ -188,13 +188,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                   <p className="text-[13px] md:text-sm text-[#5C5C5C] font-body leading-relaxed flex-1">
                     {service.short}
                   </p>
-                  <button
-                    onClick={(event) => { event.stopPropagation(); setSelected(service); }}
-                    className="mt-7 inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#C8102E] group-hover:gap-3 transition-all duration-200 self-start"
-                  >
-                    <span>View Our Work</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
-                  </button>
                 </div>
               </div>
             );
@@ -203,7 +196,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
       </section>
 
       <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto pb-16 md:pb-20">
-        <div className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl">
+        <div
+          className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl"
+        >
           <div
             className="absolute right-0 top-0 bottom-0 w-80 pointer-events-none rounded-r-2xl"
             style={{ background: 'radial-gradient(ellipse at right center, rgba(200,16,46,0.22), transparent 70%)' }}
@@ -250,7 +245,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
             </button>
 
             <div className="rounded-xl p-6 mb-6 relative overflow-hidden" style={{ backgroundColor: selected.bg }}>
-              <div className="absolute right-4 bottom-2 pointer-events-none" style={{ opacity: 0.2 }} aria-hidden="true">
+              <div
+                className="absolute right-4 bottom-2 pointer-events-none"
+                style={{ opacity: 0.2 }}
+                aria-hidden="true"
+              >
                 <selected.Icon className="w-20 h-20" style={{ color: selected.watermark }} />
               </div>
               <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center mb-4 shadow-sm">
@@ -271,8 +270,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 <Layers className="w-4 h-4 text-[#C8102E]" /> Scope of Services
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {selected.items.map((item) => (
-                  <div key={item} className="flex items-start gap-2 p-3 bg-[#FAFAFA] border border-[#E8E8E8] text-xs text-[#121214] rounded-lg">
+                {selected.items.map((item, index) => (
+                  <div key={index} className="flex items-start gap-2 p-3 bg-[#FAFAFA] border border-[#E8E8E8] text-xs text-[#121214] rounded-lg">
                     <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
@@ -285,8 +284,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 <ShieldCheck className="w-4 h-4 text-[#C8102E]" /> Deliverables
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {selected.deliverables.map((deliverable) => (
-                  <div key={deliverable} className="flex items-center gap-2 p-3 bg-red-50/60 border border-red-200/60 text-xs text-[#121214] font-medium rounded-lg">
+                {selected.deliverables.map((deliverable, index) => (
+                  <div key={index} className="flex items-center gap-2 p-3 bg-red-50/60 border border-red-200/60 text-xs text-[#121214] font-medium rounded-lg">
                     <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full shrink-0" />
                     {deliverable}
                   </div>
