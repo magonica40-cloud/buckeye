@@ -15,20 +15,20 @@ export const HomePage: React.FC<HomePageProps> = () => {
             className="font-bold uppercase text-[#C8102E]"
             style={{
               fontFamily: 'Arial, Helvetica, sans-serif',
-              fontSize: 'clamp(2.25rem, 6.3vw, 3.5rem)',
-              lineHeight: 1.2,
+              fontSize: 'clamp(3.3rem, 7.2vw, 5.1rem)',
+              lineHeight: 0.96,
               letterSpacing: '0.01em',
             }}
           >
             <span className="block">REACH YOUR</span>
-            <span className="block mt-10 sm:mt-12">TARGET AUDIENCE</span>
+            <span className="block mt-8 sm:mt-10">TARGET AUDIENCE</span>
           </h1>
 
           <p
             className="mt-10 sm:mt-12 font-bold uppercase text-[#C8102E]"
             style={{
               fontFamily: 'Arial, Helvetica, sans-serif',
-              fontSize: 'clamp(1.25rem, 3.4vw, 1.8rem)',
+              fontSize: 'clamp(1.8rem, 3.9vw, 2.6rem)',
               lineHeight: 1.2,
               letterSpacing: '0.005em',
             }}
