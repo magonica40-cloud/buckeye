@@ -153,36 +153,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-24 md:pt-28">
+      {/* Services header content removed as requested. */}
 
-      {/* ── PAGE HEADER ──────────────────────────────────────── */}
-      <section className="w-full border-b border-[#EBEBEB] py-10 md:py-12 px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto relative overflow-hidden">
-        {/* Faint BUCKEYE watermark */}
-        <div
-          className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none select-none font-display font-black leading-none text-[#121214]"
-          style={{ fontSize: 'clamp(6rem, 18vw, 16rem)', opacity: 0.035, letterSpacing: '-0.03em' }}
-          aria-hidden="true"
-        >
-          BUCKEYE
-        </div>
-        <div className="flex items-center gap-3 mb-5 relative z-10">
-          <span className="w-2 h-2 bg-[#C8102E]"></span>
-          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#C8102E]">
-            Our Services · 11 Disciplines
-          </span>
-        </div>
-        <h1
-          className="font-display font-black text-[#121214] tracking-tighter leading-[1.0] mb-4"
-          style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
-        >
-          Capabilities built for<br />
-          <span className="text-[#C8102E]">real commercial impact.</span>
-        </h1>
-        <p className="text-base text-[#5C5C5C] font-body leading-relaxed max-w-2xl">
-          From brand strategy and creative production to digital campaigns, performance marketing and beyond — everything your brand needs under one roof.
-        </p>
-      </section>
-
-      {/* ── PASTEL CARD GRID — 3 columns, adwants style ───── */}
       <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto py-10 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {SERVICES.map((service) => {
@@ -195,7 +167,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 style={{ backgroundColor: service.bg, minHeight: '280px' }}
                 onClick={() => setSelected(service)}
               >
-                {/* Ghost watermark icon — bottom right */}
                 <div
                   className="absolute right-5 bottom-5 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110"
                   aria-hidden="true"
@@ -204,33 +175,21 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                   <Icon className="w-28 h-28 md:w-32 md:h-32" style={{ color: service.watermark }} />
                 </div>
 
-                {/* Card body */}
                 <div className="relative z-10 p-7 md:p-8 flex flex-col flex-1">
-
-                  {/* Icon box — white rounded square */}
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 shadow-sm shrink-0"
-                    style={{ backgroundColor: '#FFFFFF' }}
-                  >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 shadow-sm shrink-0 bg-white">
                     <Icon className="w-5 h-5" style={{ color: service.iconColor }} />
                   </div>
-
-                  {/* Title */}
                   <h3
                     className="font-display font-bold text-[#121214] leading-tight mb-2.5"
                     style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
                   >
                     {service.title}
                   </h3>
-
-                  {/* Short description */}
                   <p className="text-[13px] md:text-sm text-[#5C5C5C] font-body leading-relaxed flex-1">
                     {service.short}
                   </p>
-
-                  {/* VIEW OUR WORK link — bottom */}
                   <button
-                    onClick={(e) => { e.stopPropagation(); setSelected(service); }}
+                    onClick={(event) => { event.stopPropagation(); setSelected(service); }}
                     className="mt-7 inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#C8102E] group-hover:gap-3 transition-all duration-200 self-start"
                   >
                     <span>View Our Work</span>
@@ -243,11 +202,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ───────────────────────────────────────── */}
       <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto pb-16 md:pb-20">
-        <div
-          className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl"
-        >
+        <div className="bg-[#121214] text-white p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl">
           <div
             className="absolute right-0 top-0 bottom-0 w-80 pointer-events-none rounded-r-2xl"
             style={{ background: 'radial-gradient(ellipse at right center, rgba(200,16,46,0.22), transparent 70%)' }}
@@ -276,7 +232,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
         </div>
       </section>
 
-      {/* ── DETAIL MODAL ─────────────────────────────────────── */}
       {selected && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
@@ -284,25 +239,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
         >
           <div
             className="bg-white border border-[#E8E8E8] shadow-2xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto rounded-2xl"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
           >
             <button
               onClick={() => setSelected(null)}
               className="absolute top-5 right-5 w-9 h-9 bg-[#F5F5F5] hover:bg-[#E8E8E8] flex items-center justify-center transition-colors rounded-lg"
+              aria-label="Close service details"
             >
               <X className="w-5 h-5 text-[#121214]" />
             </button>
 
-            {/* Modal header with pastel bg */}
-            <div
-              className="rounded-xl p-6 mb-6 relative overflow-hidden"
-              style={{ backgroundColor: selected.bg }}
-            >
-              <div
-                className="absolute right-4 bottom-2 pointer-events-none"
-                style={{ opacity: 0.2 }}
-                aria-hidden="true"
-              >
+            <div className="rounded-xl p-6 mb-6 relative overflow-hidden" style={{ backgroundColor: selected.bg }}>
+              <div className="absolute right-4 bottom-2 pointer-events-none" style={{ opacity: 0.2 }} aria-hidden="true">
                 <selected.Icon className="w-20 h-20" style={{ color: selected.watermark }} />
               </div>
               <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center mb-4 shadow-sm">
@@ -323,8 +271,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 <Layers className="w-4 h-4 text-[#C8102E]" /> Scope of Services
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {selected.items.map((item, i) => (
-                  <div key={i} className="flex items-start gap-2 p-3 bg-[#FAFAFA] border border-[#E8E8E8] text-xs text-[#121214] rounded-lg">
+                {selected.items.map((item) => (
+                  <div key={item} className="flex items-start gap-2 p-3 bg-[#FAFAFA] border border-[#E8E8E8] text-xs text-[#121214] rounded-lg">
                     <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
@@ -337,10 +285,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
                 <ShieldCheck className="w-4 h-4 text-[#C8102E]" /> Deliverables
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {selected.deliverables.map((deliv, i) => (
-                  <div key={i} className="flex items-center gap-2 p-3 bg-red-50/60 border border-red-200/60 text-xs text-[#121214] font-medium rounded-lg">
+                {selected.deliverables.map((deliverable) => (
+                  <div key={deliverable} className="flex items-center gap-2 p-3 bg-red-50/60 border border-red-200/60 text-xs text-[#121214] font-medium rounded-lg">
                     <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full shrink-0" />
-                    {deliv}
+                    {deliverable}
                   </div>
                 ))}
               </div>
@@ -349,7 +297,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
             <div className="pt-4 border-t border-[#E8E8E8]">
               <button
                 onClick={() => { setSelected(null); onOpenConsultation(selected.title); }}
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#C8102E] text-white hover:bg-[#121214] text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-md rounded-lg"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#C8102E] text-white hover:bg-[#121214] text-xs font-mono font-bold uppercase tracking-wider transition-colors rounded-lg"
               >
                 <span>Initiate Brief for {selected.title}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -358,7 +306,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
           </div>
         </div>
       )}
-
     </div>
   );
 };
