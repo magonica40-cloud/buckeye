@@ -7,61 +7,29 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = () => {
   return (
-    <div className="w-full h-dvh flex flex-col bg-[#FAF8F5] overflow-hidden relative">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 72% 60% at 50% 44%, rgba(200,16,46,0.055) 0%, transparent 65%)' }}
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 bottom-12 flex items-center justify-center overflow-hidden select-none"
-      >
-        <span
-          className="font-display font-black leading-none text-[#8F7770] opacity-[0.025] tracking-[-0.07em] blur-[0.3px]"
-          style={{ fontSize: 'clamp(8rem, 27vw, 25rem)' }}
-        >
-          BUCKEYE
-        </span>
-      </div>
-
-      <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center relative z-10">
+    <div className="w-full h-dvh flex flex-col bg-[#FAF8F5] overflow-hidden relative border-t-4 border-[#C8102E]">
+      <main className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center">
         <div className="w-full max-w-6xl">
-          <div className="mb-6 flex items-center justify-center gap-3 text-[#C8102E]/70">
-            <span className="block h-px w-10 bg-[#C8102E]/40" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.38em]">Buckeye Atelier</span>
-            <span className="block h-px w-10 bg-[#C8102E]/40" />
-          </div>
-
           <h1
             data-cursor-hover
-            className="font-display font-extrabold uppercase text-[#C8102E] leading-[0.98] tracking-[-0.055em] transition-all duration-500 ease-out hover:scale-[1.015] hover:text-[#A80D27]"
+            className="font-display font-extrabold uppercase text-[#C8102E] leading-tight tracking-[-0.035em]"
             style={{
               fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-              fontSize: 'clamp(2.5rem, 6.4vw, 6.4rem)',
-              marginBottom: 'clamp(1.25rem, 3vw, 2.5rem)',
+              fontSize: 'clamp(2.4rem, 5.6vw, 4.5rem)',
             }}
           >
-            REACH YOUR
-            <br />
-            <span className="font-extrabold not-italic tracking-[-0.055em]">TARGET AUDIENCE</span>
+            <span className="block">REACH YOUR</span>
+            <span className="block mt-5 sm:mt-8">TARGET AUDIENCE</span>
           </h1>
 
-          <div className="flex items-center justify-center gap-4" style={{ marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
-            <span className="block w-12 sm:w-16 h-px bg-[#C8102E]/30" />
-            <span className="block w-2 h-2 rotate-45 bg-[#C8102E]/60" />
-            <span className="block w-12 sm:w-16 h-px bg-[#C8102E]/30" />
-          </div>
-
           <p
-            className="font-mono font-extrabold uppercase tracking-[0.12em] text-[#1B1C1A]/80"
-            style={{ fontSize: 'clamp(1.15rem, 2.4vw, 1.8rem)', lineHeight: 1.2, marginBottom: '0' }}
+            className="mt-8 sm:mt-10 font-sans font-extrabold uppercase text-[#C8102E] leading-tight tracking-[-0.02em]"
+            style={{ fontSize: 'clamp(1.25rem, 3.1vw, 2.5rem)' }}
           >
-            Better Targeting &nbsp;=&nbsp; Better Results
+            Better Targeting = Better Results
           </p>
         </div>
-      </div>
+      </main>
 
       <div className="shrink-0 w-full bg-[#121214] text-[#A1A1AA] text-[10px] sm:text-[11px] font-mono py-2.5 px-5 sm:px-10 flex items-center justify-between gap-4 relative z-20">
         <div className="flex items-center gap-3 sm:gap-4">
