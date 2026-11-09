@@ -18,7 +18,7 @@ export const ContactPage: React.FC = () => (
         Let’s talk.
       </p>
 
-      <address className="mt-10 not-italic text-[#C8102E] leading-relaxed font-body font-semibold" style={{ fontSize: 'clamp(0.95rem, 1.45vw, 1.75rem)' }}>
+      <address className="mt-10 not-italic text-[#C8102E] leading-relaxed font-body font-bold" style={{ fontSize: 'clamp(0.95rem, 1.45vw, 1.75rem)' }}>
         <span className="block">Church Street, Haridevpur, Shanthala Nagar, Ashok Nagar,</span>
         <span className="block">Bengaluru, Karnataka – 560001</span>
         <p className="mt-3">

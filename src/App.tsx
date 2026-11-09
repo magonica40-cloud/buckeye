@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { ConsultationModal } from './components/ConsultationModal';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -35,8 +34,7 @@ const AppContent: React.FC = () => {
   return (
     <div className={`flex flex-col ${isHomePage ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-[#FBF9F6] text-[#1B1C1A] relative`} style={{ cursor: 'none' }}>
       <CustomCursor />
-      {/* Subtle Tactile Editorial Paper / Film Grain Overlay */}
-      <div 
+      <div
         aria-hidden="true"
         className="fixed inset-0 pointer-events-none z-40 opacity-[0.022] mix-blend-multiply select-none"
         style={{
@@ -45,48 +43,22 @@ const AppContent: React.FC = () => {
         }}
       />
 
-      {/* Top Header */}
       <Header onOpenConsultation={handleOpenConsultation} />
 
-      {/* Page Content Routes */}
       <main className={`flex-1 w-full ${isHomePage ? 'pt-20 sm:pt-[6.75rem] overflow-hidden' : ''}`}>
         <Routes>
-          <Route 
-            path="/" 
-            element={<HomePage onOpenConsultation={handleOpenConsultation} />} 
-          />
-          <Route 
-            path="/about" 
-            element={<AboutPage onOpenConsultation={handleOpenConsultation} />} 
-          />
-          <Route 
-            path="/services" 
-            element={<ServicesPage onOpenConsultation={handleOpenConsultation} />} 
-          />
-          <Route 
-            path="/clients" 
-            element={<ClientsPage onOpenConsultation={handleOpenConsultation} />} 
-          />
-          <Route 
-            path="/workshops" 
-            element={<WorkshopsPage onOpenConsultation={handleOpenConsultation} />} 
-          />
-          <Route 
-            path="/contact" 
-            element={<ContactPage />} 
-          />
-          {/* Fallback redirect */}
+          <Route path="/" element={<HomePage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/about" element={<AboutPage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/services" element={<ServicesPage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/clients" element={<ClientsPage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/workshops" element={<WorkshopsPage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
-      {/* Global Footer (Rendered on all pages EXCEPT single-screen zero-scroll Home) */}
-      {!isHomePage && <Footer onOpenConsultation={handleOpenConsultation} />}
-
-      {/* Mobile Sticky Bottom Navigation (Rendered on other pages) */}
       {!isHomePage && <MobileBottomNav />}
 
-      {/* Interactive Strategic Consultation / Enquiry Modal */}
       <ConsultationModal
         isOpen={isModalOpen}
         onClose={handleCloseConsultation}
@@ -97,13 +69,11 @@ const AppContent: React.FC = () => {
   );
 };
 
-export const App: React.FC = () => {
-  return (
-    <Router>
-      <ScrollToTop />
-      <AppContent />
-    </Router>
-  );
-};
+export const App: React.FC = () => (
+  <Router>
+    <ScrollToTop />
+    <AppContent />
+  </Router>
+);
 
 export default App;
