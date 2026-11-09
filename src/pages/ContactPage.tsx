@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ContactPage: React.FC = () => (
   <main className="min-h-[calc(100dvh-6rem)] w-full bg-[#FBF9F6] px-4 sm:px-6 py-24 flex items-center justify-center text-center">
-    <section className="w-full max-w-[1440px] mx-auto translate-y-8">
+    <section className="w-full max-w-[1440px] mx-auto translate-y-16">
       <h1
         className="whitespace-nowrap font-display font-black text-[#C8102E] tracking-[-0.06em] leading-[0.95]"
         style={{ fontSize: 'clamp(1.5rem, 5.6vw, 6rem)' }}
