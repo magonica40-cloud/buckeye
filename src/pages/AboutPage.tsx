@@ -24,12 +24,11 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
           <div className="w-full max-w-6xl flex flex-col items-center">
             <h1
               data-cursor-hover
-              className="font-display font-black text-[#C8102E] tracking-[-0.065em] leading-[0.88]"
+              className="font-display font-black text-[#C8102E] tracking-[-0.065em] leading-[1.05]"
               style={{ fontSize: 'clamp(3rem, 8.3vw, 7.5rem)' }}
             >
-              We Create.
-              <br />
-              <span className="text-[#C8102E] font-serif italic font-medium">You Grow.</span>
+              <span className="block">We Create.</span>
+              <span className="block mt-3 sm:mt-5">You Grow.</span>
             </h1>
 
             <p className="mt-8 md:mt-10 max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#C8102E] font-body leading-relaxed">
