@@ -22,7 +22,7 @@ export const ClientsPage: React.FC<ClientsPageProps> = () => (
 
       <h1
         data-cursor-hover
-        className="font-display font-black uppercase leading-[1.05] tracking-[0.2em] select-none text-[#C8102E]"
+        className="font-display font-black uppercase leading-[1.05] tracking-[0.06em] select-none text-[#C8102E]"
         style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
       >
         <span className="block">The</span>
