@@ -54,7 +54,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
   const [selected, setSelected] = useState<Service | null>(null);
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-24 md:pt-28">
+    <div className="flex flex-col w-full min-h-screen bg-white text-[#121214] pt-10 md:pt-12 justify-center">
       <section className="w-full px-5 sm:px-10 lg:px-16 max-w-[1440px] mx-auto py-10 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {SERVICES.map(({ Icon, ...service }) => (
