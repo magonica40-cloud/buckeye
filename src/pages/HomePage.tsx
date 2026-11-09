@@ -14,6 +14,18 @@ export const HomePage: React.FC<HomePageProps> = () => {
         style={{ background: 'radial-gradient(ellipse 72% 60% at 50% 44%, rgba(200,16,46,0.055) 0%, transparent 65%)' }}
       />
 
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
+      >
+        <span
+          className="font-display font-black leading-none text-[#1B1C1A] opacity-[0.04] tracking-[-0.07em]"
+          style={{ fontSize: 'clamp(9rem, 32vw, 30rem)' }}
+        >
+          BUCKEYE
+        </span>
+      </div>
+
       <div className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center relative z-10">
         <div className="w-full max-w-6xl">
           <div className="mb-6 flex items-center justify-center gap-3 text-[#C8102E]/70">
@@ -43,8 +55,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </div>
 
           <p
-            className="font-mono font-extrabold uppercase tracking-[0.18em] text-[#1B1C1A]/70"
-            style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)', marginBottom: '0' }}
+            className="font-mono font-extrabold uppercase tracking-[0.12em] text-[#1B1C1A]/80"
+            style={{ fontSize: 'clamp(1.15rem, 2.4vw, 1.8rem)', lineHeight: 1.2, marginBottom: '0' }}
           >
             Better Targeting &nbsp;=&nbsp; Better Results
           </p>
