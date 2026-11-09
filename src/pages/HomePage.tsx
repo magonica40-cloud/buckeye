@@ -7,12 +7,12 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = () => {
   return (
-    <div className="w-full h-dvh flex flex-col bg-[#FAF8F5] overflow-hidden relative border-t-4 border-[#C8102E]">
+    <div className="w-full h-dvh flex flex-col bg-[#C8102E] overflow-hidden relative">
       <main className="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center">
         <div className="w-full max-w-6xl">
           <h1
             data-cursor-hover
-            className="font-bold uppercase text-[#C8102E]"
+            className="font-bold uppercase text-white"
             style={{
               fontFamily: 'Arial, Helvetica, sans-serif',
               fontSize: 'clamp(3.3rem, 7.2vw, 5.1rem)',
@@ -25,7 +25,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </h1>
 
           <p
-            className="mt-10 sm:mt-12 font-bold uppercase text-[#C8102E]"
+            className="mt-10 sm:mt-12 font-bold uppercase text-white"
             style={{
               fontFamily: 'Arial, Helvetica, sans-serif',
               fontSize: 'clamp(1.8rem, 3.9vw, 2.6rem)',
