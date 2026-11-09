@@ -31,6 +31,5 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = () => (
 
       <span aria-hidden="true" className="mt-8 block h-px w-16 bg-[#C8102E]/60" />
     </div>
-    <div className="h-1 w-full bg-[#C8102E]" />
   </main>
 );
