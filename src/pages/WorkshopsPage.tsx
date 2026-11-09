@@ -5,7 +5,7 @@ interface WorkshopsPageProps {
 }
 
 export const WorkshopsPage: React.FC<WorkshopsPageProps> = () => (
-  <main className="min-h-[calc(100dvh-7rem)] bg-[#FBF9F6] text-[#C8102E] flex flex-col overflow-hidden relative">
+  <main className="min-h-screen bg-[#FBF9F6] text-[#C8102E] flex flex-col overflow-hidden relative pt-20 sm:pt-[7.25rem]">
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center select-none">
       <span
         className="font-display font-black leading-none text-[#C8102E] opacity-[0.05] tracking-[-0.06em]"
@@ -15,7 +15,7 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = () => (
       </span>
     </div>
 
-    <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center relative z-10">
+    <div className="flex-1 min-h-[calc(100dvh-5rem)] sm:min-h-[calc(100dvh-7.25rem)] flex flex-col items-center justify-center px-6 py-16 text-center relative z-10">
       <p className="mb-7 text-[10px] sm:text-xs font-display font-bold uppercase tracking-[0.3em] text-[#C8102E]">
         Workshops &amp; Masterclasses
       </p>
