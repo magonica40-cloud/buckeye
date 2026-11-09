@@ -31,7 +31,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
               <span className="block mt-3 sm:mt-5">You Grow.</span>
             </h1>
 
-            <p className="mt-8 md:mt-10 max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#C8102E] font-body leading-relaxed">
+            <p className="mt-8 md:mt-10 max-w-4xl text-xl sm:text-2xl lg:text-3xl text-[#C8102E] font-body leading-relaxed">
               A creative space where ideas become identities, stories become experiences
               and brands become unforgettable. We bring imagination, strategy and
               execution together to make brands matter.
