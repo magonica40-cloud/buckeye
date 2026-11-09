@@ -9,7 +9,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
     <main className="w-full min-h-screen bg-[#FBF9F6] pt-24 md:pt-28 flex flex-col relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex items-center justify-end pr-8 select-none"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
       >
         <span
           className="font-display font-black leading-none text-[#1B1C1A] opacity-[0.04] tracking-[-0.06em]"
@@ -19,9 +19,9 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         </span>
       </div>
 
-      <section className="flex-1 min-h-[calc(100dvh-7rem)] w-full flex items-stretch relative z-10">
-        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-16 flex flex-col justify-center">
-          <div className="w-full max-w-6xl">
+      <section className="flex-1 min-h-[calc(100dvh-7rem)] w-full flex items-center justify-center relative z-10">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-16 flex flex-col items-center justify-center text-center">
+          <div className="w-full max-w-6xl flex flex-col items-center">
             <h1
               data-cursor-hover
               className="font-display font-black text-[#1B1C1A] tracking-[-0.065em] leading-[0.88]"
@@ -32,14 +32,11 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
               <span className="text-[#C8102E] font-serif italic font-medium">You Grow.</span>
             </h1>
 
-            <div className="mt-8 md:mt-10 flex items-stretch gap-5 md:gap-8">
-              <span aria-hidden="true" className="w-1 shrink-0 bg-[#C8102E]" />
-              <p className="max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#5C403F] font-body leading-relaxed">
-                A creative space where ideas become identities, stories become experiences
-                and brands become unforgettable. We bring imagination, strategy and
-                execution together to make brands matter.
-              </p>
-            </div>
+            <p className="mt-8 md:mt-10 max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#5C403F] font-body leading-relaxed">
+              A creative space where ideas become identities, stories become experiences
+              and brands become unforgettable. We bring imagination, strategy and
+              execution together to make brands matter.
+            </p>
           </div>
         </div>
       </section>

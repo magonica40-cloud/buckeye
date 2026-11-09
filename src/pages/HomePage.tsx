@@ -33,7 +33,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           >
             REACH YOUR
             <br />
-            <span className="font-serif italic font-medium tracking-[-0.065em]">TARGET AUDIENCE</span>
+            <span className="font-extrabold not-italic tracking-[-0.055em]">TARGET AUDIENCE</span>
           </h1>
 
           <div className="flex items-center justify-center gap-4" style={{ marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
@@ -43,16 +43,10 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </div>
 
           <p
-            className="font-mono font-bold uppercase tracking-[0.24em] text-[#1B1C1A]/60"
-            style={{ fontSize: 'clamp(0.6rem, 1.1vw, 0.8rem)', marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)' }}
+            className="font-mono font-extrabold uppercase tracking-[0.18em] text-[#1B1C1A]/70"
+            style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)', marginBottom: '0' }}
           >
             Better Targeting &nbsp;=&nbsp; Better Results
-          </p>
-
-          <p className="mx-auto max-w-xl text-[#5C403F] text-sm sm:text-base font-body leading-relaxed">
-            We build campaigns that connect with the right people and deliver real
-            business growth — from brand positioning to multi-market media planning
-            and transparent attribution.
           </p>
         </div>
       </div>

@@ -24,12 +24,12 @@ export const Footer: React.FC<FooterProps> = () => {
           <div className="lg:col-span-2 flex flex-col gap-4">
             <span className="text-xs font-sans font-bold uppercase tracking-[0.16em] text-[#C8102E]">Directory</span>
             <ul className="flex flex-col gap-2.5 text-sm font-sans">
-              <li><Link to="/" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">01 Home</Link></li>
-              <li><Link to="/about" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">02 About Buckeye</Link></li>
-              <li><Link to="/services" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">03 Services</Link></li>
-              <li><Link to="/clients" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">04 Client Work</Link></li>
-              <li><Link to="/workshops" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">05 Workshops &amp; Campus</Link></li>
-              <li><Link to="/contact" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">06 Contact Atelier</Link></li>
+              <li><Link to="/" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/about" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">About Buckeye</Link></li>
+              <li><Link to="/services" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">Services</Link></li>
+              <li><Link to="/clients" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">Client Work</Link></li>
+              <li><Link to="/workshops" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">Workshops &amp; Campus</Link></li>
+              <li><Link to="/contact" onClick={scrollToTop} className="text-[#D4D4D8] hover:text-white transition-colors">Contact Atelier</Link></li>
             </ul>
           </div>
 
@@ -49,16 +49,16 @@ export const Footer: React.FC<FooterProps> = () => {
             <span className="text-xs font-sans font-bold uppercase tracking-[0.16em] text-[#C8102E]">Studio Coordinates</span>
             <div className="flex flex-col gap-3 text-xs font-sans text-[#A1A1AA]">
               <div className="flex items-start gap-2.5"><MapPin className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" /><span>{SITE_CONFIG.contact.address}</span></div>
-              <div className="flex items-center gap-2.5"><Phone className="w-4 h-4 text-[#C8102E] shrink-0" /><a href={`tel:${SITE_CONFIG.contact.phoneTel}`} className="hover:text-white transition-colors font-mono">{SITE_CONFIG.contact.phoneDisplay}</a></div>
+              <div className="flex items-center gap-2.5"><Phone className="w-4 h-4 text-[#C8102E] shrink-0" /><a href={`tel:${SITE_CONFIG.contact.phoneTel}`} className="hover:text-white transition-colors">{SITE_CONFIG.contact.phoneDisplay}</a></div>
               <div className="flex items-center gap-2.5"><Mail className="w-4 h-4 text-[#C8102E] shrink-0" /><a href={`mailto:${SITE_CONFIG.contact.emailBriefs}`} className="hover:text-white transition-colors">{SITE_CONFIG.contact.emailBriefs}</a></div>
-              <div className="flex items-start gap-2.5 pt-1"><Clock className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" /><div><p>{SITE_CONFIG.contact.hours}</p><p className="text-[11px] text-[#71717A]">{SITE_CONFIG.contact.protocol}</p></div></div>
+              <div className="flex items-start gap-2.5 pt-1"><Clock className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" /><div><p>{SITE_CONFIG.contact.hours}</p><p className="text-[11px] text-[#71717A]">Bengaluru Atelier</p></div></div>
             </div>
           </div>
         </div>
 
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans text-[#71717A]">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>© {new Date().getFullYear()} BUCKEYE – DESIGN &amp; CONSULTING.</span><span className="hidden sm:inline-block text-[#3F3F46]">|</span><span className="text-[11px] text-[#A1A1AA]">Editorial Brand Architecture &amp; Strategic Advisory</span>
+            <span>© {new Date().getFullYear()} BUCKEYE – DESIGN &amp; CONSULTING.</span><span className="hidden sm:inline-block text-[#3F3F46]">|</span><span className="text-[11px] text-[#A1A1AA]">Creative Strategy &amp; Brand Advisory</span>
           </div>
           <div className="text-[11px] text-[#71717A] text-center md:text-right max-w-md">Studio coordinates and case studies represent configurable portfolio demonstrations.</div>
         </div>
