@@ -12,7 +12,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
       >
         <span
-          className="font-display font-black leading-none text-[#1B1C1A] opacity-[0.04] tracking-[-0.06em]"
+          className="font-display font-black leading-none text-[#C8102E] opacity-[0.04] tracking-[-0.06em]"
           style={{ fontSize: 'clamp(8rem, 22vw, 22rem)' }}
         >
           BUCKEYE
@@ -24,7 +24,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
           <div className="w-full max-w-6xl flex flex-col items-center">
             <h1
               data-cursor-hover
-              className="font-display font-black text-[#1B1C1A] tracking-[-0.065em] leading-[0.88]"
+              className="font-display font-black text-[#C8102E] tracking-[-0.065em] leading-[0.88]"
               style={{ fontSize: 'clamp(3rem, 8.3vw, 7.5rem)' }}
             >
               We Create.
@@ -32,7 +32,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
               <span className="text-[#C8102E] font-serif italic font-medium">You Grow.</span>
             </h1>
 
-            <p className="mt-8 md:mt-10 max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#5C403F] font-body leading-relaxed">
+            <p className="mt-8 md:mt-10 max-w-4xl text-lg sm:text-xl lg:text-2xl text-[#C8102E] font-body leading-relaxed">
               A creative space where ideas become identities, stories become experiences
               and brands become unforgettable. We bring imagination, strategy and
               execution together to make brands matter.
