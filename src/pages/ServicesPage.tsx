@@ -59,7 +59,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultation }
           <div className="relative z-10">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#C8102E] block mb-3">Initiate Partnership</span>
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Ready to reach your <span className="text-[#FFDAD8]">target audience?</span></h2>
-            <p className="text-[13px] text-[#A1A1AA] font-body leading-relaxed max-w-lg">Book a strategic consultation at our Indiranagar, Bengaluru atelier or virtually worldwide.</p>
+            <p className="text-[13px] text-[#A1A1AA] font-body leading-relaxed max-w-lg">Book a strategic consultation at our Bengaluru atelier or virtually worldwide.</p>
           </div>
           <div className="relative z-10 shrink-0">
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8102E] text-white hover:bg-white hover:text-[#C8102E] text-[11px] font-mono font-bold uppercase tracking-wider transition-all shadow-lg rounded-lg"><span>Initiate Strategic Brief</span><ArrowRight className="w-4 h-4" /></Link>
