@@ -49,7 +49,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage onOpenConsultation={handleOpenConsultation} />} />
           <Route path="/about" element={<AboutPage onOpenConsultation={handleOpenConsultation} />} />
-          <Route path="/services" element={<ServicesPage onOpenConsultation={handleOpenConsultation} />} />
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/clients" element={<ClientsPage onOpenConsultation={handleOpenConsultation} />} />
           <Route path="/workshops" element={<WorkshopsPage onOpenConsultation={handleOpenConsultation} />} />
           <Route path="/contact" element={<ContactPage />} />
